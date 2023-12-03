@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<div
+  class="noSelect left-0 top-0 z-40 mb-6 flex w-full select-none items-center justify-center bg-white text-gray-600 transition-shadow duration-500 dark:bg-primary dark:text-gray-300"
+>
+  <div
+    class="md:w-custom lg:w-customLg relative flex w-full justify-between border-b py-5"
+  >
+    <span class="dark-mode-button flex transition">
+      <Icon name="lucide:settings" class="w-6" />
+    </span>
+    <span
+      class="sidebar-toggle-button flex cursor-pointer items-center p-1 transition duration-150 active:scale-95 dark:hover:text-white"
+    >
+      <Icon x-on:click="open = ! open" name="tabler:menu-2" class="w-6" />
+    </span>
+  </div>
+</div>
+
+<script src="./NavBarScript.ts"></script>

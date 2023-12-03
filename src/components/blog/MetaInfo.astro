@@ -1,0 +1,38 @@
+---
+import Icon from "astro-icon";
+import { formatDateTime } from "@utils/formatter";
+
+export interface Props {
+  date: Date;
+  words: number;
+  showWordCount?: boolean;
+  className?: string;
+}
+const { date, words, showWordCount = true, className } = Astro.props;
+
+const defaultClasses = "flex items-center gap-1 capitalize";
+---
+
+<div class="flex gap-3 text-xs sm:text-sm">
+  <span class={defaultClasses}>
+    <Icon class="icon" name="lucide:calendar" class={`w-4 ${className}`} />
+    {formatDateTime(date)}
+  </span>
+  <span>|</span>
+  <span class={defaultClasses}>
+    <Icon name="lucide:clock" class={`w-4 ${className}`} />{
+      Math.ceil(words / 200)
+    }&nbsp;minutes
+  </span>
+  {
+    showWordCount && (
+      <>
+        <span>|</span>
+        <span class={defaultClasses}>
+          <Icon name="lucide:edit-3" class={`w-4 ${className}`} />
+          {words}
+        </span>
+      </>
+    )
+  }
+</div>
