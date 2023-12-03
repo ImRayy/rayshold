@@ -8,16 +8,19 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   prefetch: true,
   prefetch: {
-    defaultStrategy: "hover"
+    defaultStrategy: "hover",
   },
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), mdx({
-    syntaxHighlight: "shiki",
-    shikiConfig: {
-      theme: "material-theme"
-    }
-  })],
-  output: "server",
-  adapter: vercel()
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        theme: "material-theme",
+      },
+    }),
+  ],
+  output: "hybrid",
+  adapter: vercel(),
 });
