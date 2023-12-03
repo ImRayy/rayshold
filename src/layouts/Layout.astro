@@ -16,10 +16,12 @@ const {
   url = new URL(Astro.url).href,
   ogImage = "https://res.cloudinary.com/strapibackendproject/image/upload/v1701538563/rayshold/rayshold.webp",
 } = Astro.props;
+
+const theme = Astro.cookies.get("theme")?.value ?? "light";
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-pt-24 scroll-smooth">
+<html lang="en" class={`scroll-pt-24 scroll-smooth ${theme}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
