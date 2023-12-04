@@ -5,20 +5,12 @@ const darkModeButton = document.querySelector(
 type Themes = "light" | "dark";
 
 function saveTheme(theme: Themes) {
-  let date = new Date();
-  date.setTime(date.getTime() + 365 * 86400000);
-  document.cookie = `theme=${theme};expires=${date.toUTCString()}`;
+  localStorage.setItem("theme", theme);
 }
 
 const sideBar = document.getElementById("sidebar");
 const element = document.querySelector("html")?.classList;
-const theme = document.cookie.match("theme=([^;]+)");
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (theme && theme[1] === "dark") {
-    element?.add("dark");
-  }
-});
+const theme = localStorage.getItem("theme");
 
 darkModeButton.addEventListener("click", () => {
   if (element?.contains("dark")) {
