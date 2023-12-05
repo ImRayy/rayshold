@@ -1,9 +1,10 @@
 ---
-import "../styles/global.css";
-import "../styles/markdown.css";
 import NavBar from "@components/navbar/NavBar.astro";
 import SideBar from "@components/sidebar/SideBar.astro";
 import ThemeProviderar from "@components/ui/ThemeProviderar.astro";
+import { ViewTransitions } from "astro:transitions";
+import "../styles/global.css";
+import "../styles/markdown.css";
 
 export interface Props {
   title?: string;
@@ -44,6 +45,7 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
     <meta property="og:image" content={ogImage} />
+    <ViewTransitions />
     <ThemeProviderar />
   </head>
   <body

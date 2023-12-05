@@ -3,8 +3,9 @@ import { Icon } from "astro-icon";
 import ToggleTheme from "./ToggleTheme.astro";
 ---
 
-<div
+<nav
   class="noSelect left-0 top-0 z-40 mb-10 inline-flex h-20 w-full select-none items-center justify-between border-b text-gray-600 transition-shadow duration-500 dark:text-gray-300"
+  transition:persist
 >
   <ToggleTheme />
   <span
@@ -17,7 +18,7 @@ import ToggleTheme from "./ToggleTheme.astro";
       class="w-6 hover:text-blue-500"
     />
   </span>
-</div>
+</nav>
 
 <script>
   function toggleClass(element: Element, className: string) {
