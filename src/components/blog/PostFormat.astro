@@ -17,9 +17,7 @@ const { FrontMatter, slug } = Astro.props;
   href={`/blog/post/${slug}`}
   class="noSelect flex flex-col gap-4 rounded-lg border bg-zinc-100 p-4 transition-transform duration-150 active:scale-95 dark:border-none dark:bg-secondary"
 >
-  <span
-    class="border-dotted font-signika text-xl font-bold transition-all duration-300"
-  >
+  <span class="border-dotted font-signika text-xl font-bold">
     {FrontMatter.title}
   </span>
   <p class="line-clamp-2 text-sm sm:text-base">{FrontMatter.description}</p>

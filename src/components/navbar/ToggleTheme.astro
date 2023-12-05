@@ -19,19 +19,6 @@ const iconClass = "w-6 transition-transform";
   const lightIcon = document.getElementById("light")?.classList;
   const darkIcon = document.getElementById("dark")?.classList;
 
-  const theme = (() => {
-    if (typeof localStorage !== undefined && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    return;
-  })();
-  if (theme) {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", theme);
-  }
-
   const handleSwitchIcon = () => {
     lightIcon?.toggle("opacity-0");
     darkIcon?.toggle("opacity-0");
