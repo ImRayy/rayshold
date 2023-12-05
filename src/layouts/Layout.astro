@@ -17,11 +17,9 @@ const {
   url = new URL(Astro.url).href,
   ogImage = "https://res.cloudinary.com/strapibackendproject/image/upload/v1701538563/rayshold/rayshold.webp",
 } = Astro.props;
-
-// const theme = Astro.cookies.get("theme")?.value ?? "light";
 ---
 
-<html lang="en" class={`scroll-pt-24 scroll-smooth`}>
+<html lang="en" class={`scroll-pt-10 scroll-smooth`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -51,10 +49,10 @@ const {
   <body
     class="flex min-h-screen flex-col items-center scroll-smooth bg-white px-4 pb-24 dark:bg-primary dark:text-gray-300 lg:px-0"
   >
-    <NavBar />
     <SideBar />
-    <div class="w-full md:w-custom lg:w-customLg">
+    <main class="w-full md:w-custom lg:w-customLg">
+      <NavBar />
       <slot />
-    </div>
+    </main>
   </body>
 </html>
