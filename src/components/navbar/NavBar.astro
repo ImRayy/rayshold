@@ -1,22 +1,37 @@
 ---
 import { Icon } from "astro-icon";
+import ToggleTheme from "./ToggleTheme.astro";
 ---
 
 <div
-  class="noSelect left-0 top-0 z-40 mb-6 flex w-full select-none items-center justify-center bg-white text-gray-600 transition-shadow duration-500 dark:bg-primary dark:text-gray-300"
+  class="noSelect left-0 top-0 z-40 mb-10 inline-flex h-20 w-full select-none items-center justify-between border-b text-gray-600 transition-shadow duration-500 dark:text-gray-300"
 >
-  <div
-    class="relative flex w-full justify-between border-b py-5 md:w-custom lg:w-customLg"
+  <ToggleTheme />
+  <span
+    id="sideBarToggle"
+    class="flex cursor-pointer items-center p-1 transition duration-150 active:scale-95 dark:hover:text-white"
   >
-    <span class="dark-mode-button flex transition">
-      <Icon name="lucide:settings" class="w-6" />
-    </span>
-    <span
-      class="sidebar-toggle-button flex cursor-pointer items-center p-1 transition duration-150 active:scale-95 dark:hover:text-white"
-    >
-      <Icon x-on:click="open = ! open" name="tabler:menu-2" class="w-6" />
-    </span>
-  </div>
+    <Icon
+      x-on:click="open = ! open"
+      name="lucide:menu"
+      class="w-6 hover:text-blue-500"
+    />
+  </span>
 </div>
 
-<script src="./NavBarScript.ts"></script>
+<script>
+  function toggleClass(element: Element, className: string) {
+    element.classList.toggle(className);
+  }
+
+  const toggleSidebarButton = document.getElementById(
+    "sideBarToggle"
+  ) as HTMLButtonElement;
+
+  toggleSidebarButton?.addEventListener("click", () => {
+    const sideBar = document.getElementById("sidebar");
+    if (sideBar) {
+      toggleClass(sideBar, "-translate-x-full");
+    }
+  });
+</script>
