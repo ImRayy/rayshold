@@ -3,9 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Scrollbar */
+html {
+  overflow-y: scroll;
+}
 * ::-webkit-scrollbar {
-  @apply h-1 w-2;
+  @apply fixed h-1 w-2;
 }
 * ::-webkit-scrollbar-track {
   @apply mx-1 rounded-md bg-transparent;
