@@ -2,22 +2,22 @@
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Badge from "@components/ui/Badge.astro";
-import Button from "@components/ui/Button.astro";
 import MetaInfo from "@components/blog/MetaInfo.astro";
 import { getWordsCount } from "@utils/helpers";
+import Icon from "astro-icon";
 
 const allBlogPosts = await getCollection("blog");
 ---
 
 <Layout title="Blog">
-  <div class="bg:primary flex flex-col gap-6">
+  <div class="flex flex-col gap-6">
     {
       allBlogPosts.map((post) => (
-        <div class="broder flex flex-col rounded-md bg-zinc-100 p-3 dark:border-none dark:bg-secondary md:flex-row">
+        <div class="broder group flex flex-col text-black dark:border-none dark:bg-secondary dark:text-gray-300 md:flex-row md:rounded-sm md:border md:bg-zinc-100 md:p-3">
           <div class="w-full md:w-2/4">
             <img src={post.data.image?.src} alt={post.data.image?.src} />
           </div>
-          <div class="flex flex-col justify-between pt-4 md:w-2/4 md:px-4 md:pt-0">
+          <div class="flex flex-col justify-between gap-4 pt-4 md:w-2/4 md:px-4 md:pt-0">
             <div class="flex flex-col gap-3">
               <h3 class="text-xl font-bold md:text-2xl">{post.data.title}</h3>
               <MetaInfo
@@ -27,14 +27,21 @@ const allBlogPosts = await getCollection("blog");
               />
               <p class="line-clamp-2">{post.data.description}</p>
               <div class="hidden gap-2 md:inline-flex">
-                {post.data.tags.map((tag) => (
-                  <Badge>{tag}</Badge>
+                {post.data.tags.map((tag: string) => (
+                  <Badge>#{tag}</Badge>
                 ))}
               </div>
             </div>
-            <div class="mt-4 flex justify-end md:mt-0 md:block">
-              <a href={`/blog/post/${post.slug}`}>
-                <Button>Read post</Button>
+            <div class="noSelect mt-5 inline-flex items-center justify-start md:mt-0">
+              <a
+                href={`/blog/post/${post.slug}`}
+                class="inline-flex gap-1 font-bold transition-transform duration-300 hover:translate-x-1 active:scale-95"
+              >
+                Read Post
+                <Icon
+                  name="lucide:arrow-right"
+                  class="w-5 -rotate-45 transition-transform duration-300 group-hover:rotate-0 "
+                />
               </a>
             </div>
           </div>
