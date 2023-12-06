@@ -13,7 +13,7 @@ const allBlogPosts = await getCollection("blog");
   <div class="flex flex-col gap-6">
     {
       allBlogPosts.map((post) => (
-        <div class="broder group flex flex-col text-black dark:border-none dark:bg-secondary dark:text-gray-300 md:flex-row md:rounded-sm md:border md:bg-zinc-100 md:p-3">
+        <div class="broder group flex flex-col text-black dark:border-none dark:text-gray-300 md:flex-row md:rounded-sm md:border md:bg-zinc-100 md:p-3 md:dark:bg-secondary">
           <div class="w-full md:w-2/4">
             <img src={post.data.image?.src} alt={post.data.image?.src} />
           </div>
