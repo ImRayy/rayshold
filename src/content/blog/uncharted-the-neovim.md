@@ -15,7 +15,7 @@ So, the question is why not use distros like NvChad, Lunarvim, Spacevim, AstroNv
 
 Before following this or any guide first take a look at [lua-guide](https://neovim.io/doc/user/lua-guide.html#lua-guide). I'm sure it will make things easier for you.
 
-#### Table of Content
+**Table of Content**
 
 1. [Install Packer](#install-packer)
 2. [Intall Plugins](#install-plugins)

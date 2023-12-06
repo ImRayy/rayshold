@@ -19,12 +19,12 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title} description={entry.data.description}>
   <div class="w-full">
-    <div class="border-b pb-4 dark:border-zinc-800">
-      <h1 class="select-none text-xl font-semibold uppercase">
+    <div class="pb-4">
+      <h1 class="text-core-content select-none pb-4 text-2xl font-semibold">
         {entry.data.title}
       </h1>
       <div
-        class="flex select-none items-center gap-3 pb-4 pt-5 text-sm font-medium text-gray-500"
+        class="text-secondary-content flex select-none items-center gap-3 pb-4 font-medium"
       >
         <MetaInfo date={entry.data.publishDate} words={words} className="w-5" />
       </div>
