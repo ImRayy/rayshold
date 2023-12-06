@@ -7,13 +7,23 @@ const iconClass = "w-6 transition-transform";
   id="darkModeToggle"
   class="group inline-flex items-center hover:text-blue-500"
 >
-  <span id="light" class="absolute opacity-0">
+  <span id="light" class="absolute">
     <Icon name="lucide:sun" class={`${iconClass} group-hover:rotate-12`} />
   </span>
-  <span id="dark" class="opacity-0">
+  <span id="dark">
     <Icon name="lucide:moon" class={`${iconClass} group-hover:-rotate-12`} />
   </span>
 </div>
+<style>
+  #light,
+  html[data-theme="dark"] #dark {
+    opacity: 0;
+  }
+  #dark,
+  html[data-theme="dark"] #light {
+    opacity: 100;
+  }
+</style>
 <script is:inline>
   const lightIcon = document.getElementById("light")?.classList;
   const darkIcon = document.getElementById("dark")?.classList;
@@ -36,11 +46,5 @@ const iconClass = "w-6 transition-transform";
 
   document
     .getElementById("darkModeToggle")
-    ?.addEventListener("click", handleToggleClick);
-  document.addEventListener("DOMContentLoaded", () => {
-    const darkMode = document.documentElement.classList.contains("dark");
-    if (darkMode) {
-      light?.classList.remove("opacity-0");
-    } else dark?.classList.remove("opacity-0");
-  });
+    .addEventListener("click", handleToggleClick);
 </script>
