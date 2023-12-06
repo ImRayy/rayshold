@@ -8,22 +8,22 @@
 /* Headings */
 
 .markdown {
-  @apply prose-h2:text-secondary-content prose-headings:text-primary prose-h2:border-b prose-h2:border-secondary prose-h2:pb-4;
+  @apply prose-headings:text-primary prose-h2:border-b prose-h2:border-secondary prose-h2:pb-4 prose-h2:text-secondary-content;
 }
 
 /* Paragraph */
 .markdown {
-  @apply prose-p:text-crust-content prose-p:font-rubik prose-p:text-md prose-p:leading-8;
+  @apply prose-p:font-rubik prose-p:text-md prose-p:leading-8 prose-p:text-crust-content;
 }
 
 /* Font Weight */
 .markdown {
-  @apply prose-em:text-crust-content prose-strong:text-primary;
+  @apply prose-strong:text-primary prose-em:text-crust-content;
 }
 
 /* Link */
 .markdown {
-  @apply prose-a:decoration-link hover:prose-a:text-link prose-a:font-bold  prose-a:text-primary prose-a:underline-offset-4;
+  @apply prose-a:font-bold prose-a:text-primary prose-a:decoration-link  prose-a:underline-offset-4 hover:prose-a:text-link;
 }
 
 /* List */
@@ -35,7 +35,7 @@
 }
 /* Codeblock */
 .markdown {
-  @apply prose-code:bg-crust prose-code:text-crust-content prose-code:mx-1 prose-code:rounded-sm prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-code:font-semibold prose-pre:my-5 prose-pre:select-text prose-pre:overflow-x-auto prose-pre:rounded-md prose-pre:bg-accent prose-pre:px-6 prose-pre:py-4;
+  @apply prose-code:mx-1 prose-code:rounded-sm prose-code:bg-crust prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-code:font-semibold prose-code:text-crust-content prose-pre:my-5 prose-pre:select-text prose-pre:overflow-x-auto prose-pre:rounded-md prose-pre:bg-accent prose-pre:px-6 prose-pre:py-4;
 }
 
 .markdown pre code {
