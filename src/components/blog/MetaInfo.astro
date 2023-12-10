@@ -10,19 +10,23 @@ export interface Props {
 }
 const { date, words, showWordCount = true, className } = Astro.props;
 
-const defaultClasses = "flex items-center gap-1 capitalize";
+const defaultClasses = "flex items-center gap-1 text-sm";
 ---
 
-<div class="flex gap-3 text-xs sm:text-sm">
-  <span class={defaultClasses}>
-    <Icon class="icon" name="lucide:calendar" class={`w-4 ${className}`} />
+<div class="flex gap-3">
+  <span class={`capitalize ${defaultClasses}`}>
+    <Icon
+      class="icon"
+      name="twemoji:spiral-calendar"
+      class={`w-4 ${className}`}
+    />
     {formatDateTime(date)}
   </span>
   <span>|</span>
   <span class={defaultClasses}>
-    <Icon name="lucide:clock" class={`w-4 ${className}`} />{
+    <Icon name="noto:popcorn" class={`w-4 ${className}`} />{
       Math.ceil(words / 200)
-    }&nbsp;minutes
+    }&nbsp;min. read
   </span>
   {
     showWordCount && (

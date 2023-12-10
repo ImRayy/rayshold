@@ -7,12 +7,12 @@ export interface Props {
 const { list } = Astro.props;
 ---
 
-<div class="inline-flex flex-wrap gap-2">
+<div class="inline-flex flex-wrap gap-2 text-xs md:text-md">
   {
     list?.map((platform) => {
       const nameIconPair = icons.find((i) => i.id === platform);
       return (
-        <span class="inline-flex gap-1">
+        <span class="inline-flex items-center gap-1">
           {nameIconPair?.icon && <Icon name={nameIconPair.icon} class="w-4" />}
           {nameIconPair?.name}
         </span>

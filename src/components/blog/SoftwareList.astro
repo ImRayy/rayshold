@@ -17,7 +17,7 @@ const { links } = Astro.props;
       <div class="inline-flex flex-wrap gap-4">
         <div class="inline-flex flex-wrap items-center gap-1">
           {data.list.map((software, index) => (
-            <span class="inline-flex">
+            <span class="inline-flex items-center">
               <a href={`https://${software.split("|")[1]}`}>
                 {software.split("|")[0]}
               </a>
