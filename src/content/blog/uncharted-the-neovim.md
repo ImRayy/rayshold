@@ -17,13 +17,13 @@ Before following this or any guide first take a look at [lua-guide](https://neov
 
 **Table of Content**
 
-1. [Install Packer](#install-packer)
-2. [Intall Plugins](#install-plugins)
-3. [Lazy Loading](#lazy-loading)
-4. [Configure LSP](#configure-lsp)
-5. [Options/Settings](#optionssettings)
-6. [Keybindings](#keybindings)
-7. [Must Try Plugins](#must-try-plugins)
+- 📦 [Install Packer](#install-packer)
+- 🧩 [Intall Plugins](#install-plugins)
+- 💤 [Lazy Loading](#lazy-loading)
+- 🔧 [Configure LSP](#configure-lsp)
+- ⚙️ [Options/Settings](#optionssettings)
+- ⌨️ [Keybindings](#keybindings)
+- 🌟 [Must Try Plugins](#must-try-plugins)
 
 **Here, have a look at my `~/.config/nvim` tree**
 
@@ -61,33 +61,27 @@ Understanding bootstrapping not that hard, what it does is install packer automa
 
 ```lua
 local status_ok, packer = pcall(require,'packer')
-
 if status_ok then
     return
 end
-
 vim.defer_fn(function()
     pcall(require, "impatient")
 end, 0)
-
 -- setup packer + plugins
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
 if fn.empty(fn.glob(install_path)) > 0 then
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2d2e3b" })
     print ("Cloning Packer", "-->",install_path)
     fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
-
     -- install plugins + compile their configs
     vim.cmd "packadd packer.nvim"
     require "plugins"
     vim.cmd "PackerSync"
 end
-
 ```
 
-following script is similar to packer's default bootstrap script, I just modified it a bit. As you can see I used `pcall`(protected call) instead of using `require`, and it's highly recommended you do too as much as possible unless you love to stare at errors. If you followed lua-guide then you know whats going on. Well `vim.fn` assigned to `fn` as local variable and installation location assigned to `install_path`. BTW you noticed I'm using `vim.fn` instead of using `vim.api`, just know `vim.api = lua -> C` while `vim.fn = lua -> viml -> C` that means `vim.api` is faster and `vim.fn` is friendly to those who's switching to `lua` from `vimscript` but not slow either. `if fn.empty(fn.glob(install_path)) > 0` is used to validate existence of installation path and within if `vim.api.nvim_set_hl` is just part of packer customization. And rest code is not worth explaining cause not that hard to understand. In order to make bootstrap script working add following line to `~/.config/nvim/init.lua`
+In order to make bootstrap script working add following line to `~/.config/nvim/init.lua`
 
 ```sh
 require(core.bootstrap)
@@ -102,15 +96,11 @@ local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	return
 end
-
 return require("packer").startup({
 	function(use)
-
 		-- your plugins goes here
 		use("wbthomason/packer.nvim")
-
 	end,
-
 	-- Packer Configuration
 	config = {
 		auto_clean = true,
@@ -156,11 +146,9 @@ NEVER EVER FORGET TO INCLUDE
 
 ```lua
 status_ok, any_name = pcall(require, 'plugin_name')
-
 if not status_ok then
 	return
 end
-
 -- Plugin Configurations
 ```
 
@@ -195,7 +183,6 @@ use({
 		{ "rafamadriz/friendly-snippets" },
 	},
 })
-
 ```
 
 It's dead simple isn't it? as you can follow I'm using [mason.nvim](https://github.com/williamboman/mason.nvim) which is modern and well maintained by same developer of [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer). With mason.nvim you can manage LSP, DAP (Debug Adapter Protocol), linter and formatted which is pretty cool and very useful.
@@ -228,7 +215,6 @@ vim.opt.cursorline = true      -- highlight the current line
 
 ```lua
 local o = vim.opt
-
 o.number = true
 o.wrap = true
 o.cursorline = true
@@ -266,13 +252,10 @@ Settings keybindings not hard either
 local function map(m,k,v)
 	vim.api.nvim_set_keymap(m,k,v, {silent = true})
 end
-
 -- OR
-
 local function map(m,k,v)
 	vim.keymap.set(m,k,v, {silent = true})
 end
-
 ```
 
 m = mode [ n = normal mode, i = insert mode]
