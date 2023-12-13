@@ -11,16 +11,17 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: "hover",
   },
+  markdown: {
+    shikiConfig: {
+      theme: moonlight,
+    },
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
     mdx({
       optimize: true,
-      syntaxHighlight: "shiki",
-      shikiConfig: {
-        theme: "material-theme",
-      },
     }),
   ],
 });
