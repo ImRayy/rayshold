@@ -27,7 +27,7 @@ Before following this or any guide first take a look at [lua-guide](https://neov
 
 **Here, have a look at my `~/.config/nvim` tree**
 
-```
+```sh
 ├── init.lua
 ├── lua
 │   ├── core
@@ -47,7 +47,6 @@ Before following this or any guide first take a look at [lua-guide](https://neov
 │       │   ├── statusline.lua
 │       │   └── treesitter.lua
 │       └── init.lua
-|
 └── README.md
 ```
 
