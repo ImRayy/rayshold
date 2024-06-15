@@ -1,0 +1,63 @@
+---
+import NavBar from "@components/navbar/NavBar.astro";
+import SideBar from "@components/sidebar/SideBar.astro";
+import ThemeProviderar from "@components/ui/ThemeProviderar.astro";
+import "../styles/global.css";
+import "../styles/markdown.css";
+import "../styles/markdownv2.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  ogImage?: string;
+}
+const {
+  title = "Ray's Hold",
+  description = "Insights, experiences, and quick guides—dive into my tech journey covering web dev, Linux, and software adventures",
+  url = new URL(Astro.url).href,
+  ogImage = "https://res.cloudinary.com/strapibackendproject/image/upload/v1701538563/rayshold/rayshold.webp",
+} = Astro.props;
+---
+
+<html
+  data-theme="light"
+  lang="en"
+  class={`scroll-pt-10 scroll-smooth select-none`}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={url} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- GENERAL META TAGS -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- FACEBOOK / OPEN GRAPH-->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <ThemeProviderar />
+  </head>
+  <body
+    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-josefinSans text-primary"
+  >
+    <SideBar />
+    <main class="w-full max-w-2xl">
+      <NavBar />
+      <slot />
+    </main>
+  </body>
+</html>

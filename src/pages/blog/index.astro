@@ -1,0 +1,52 @@
+---
+import Layout from "@layouts/Layout.astro";
+import MetaInfo from "@components/blog/MetaInfo.astro";
+import { getWordsCount } from "@utils/helpers";
+import Icon from "astro-icon";
+import { getSortedPosts } from "@utils/content-utils";
+
+const allBlogPosts = await getSortedPosts();
+---
+
+<Layout title="Blog">
+  <div class="space-y-6">
+    {
+      allBlogPosts.map((post) => (
+        <div class="flex w-full flex-col gap-4 sm:flex-row">
+          {/* BANNER IMAGE */}
+          <div class="w-full overflow-hidden rounded-sm md:w-3/6">
+            <img src={post.data.image?.src} alt={post.data.title} />
+          </div>
+          <div class="inline-flex w-full items-center md:w-3/6">
+            {/* DATA & READING TIME */}
+            <div>
+              <div class="mb-4 flex flex-col-reverse space-y-2 md:mb-0 md:flex-col">
+                <MetaInfo
+                  date={post.data.publishDate}
+                  showWordCount={false}
+                  words={getWordsCount(post.body)}
+                />
+                {/* TITLE & DESCRIPTION */}
+                <h3 class="font-inte text-2xl font-bold">{post.data.title}</h3>
+              </div>
+              <p class="line-clamp-2 text-sm font-normal text-primary/80">
+                {post.data.description}
+              </p>
+              {/* POST LINK */}
+              <a
+                href={`/blog/post/${post.slug}`}
+                class="group mt-4 inline-flex items-center gap-1"
+              >
+                <p>Read Post</p>
+                <Icon
+                  name="lucide:arrow-right"
+                  class="w-5 transition-transform duration-300 group-hover:translate-x-2  group-hover:rotate-0"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

@@ -1,0 +1,26 @@
+{
+  "interests": [
+    {
+      "link": "https://anilist.co/user/ImRay/",
+      "label": "Anime I watched",
+      "icon": "ant-design:aliwangwang-outlined"
+    },
+    {
+      "link": "http://stats.fm/s4i5cqkyu7n068b7f5139sl7m",
+      "label": "Spotify stats",
+      "icon": "ant-design:bar-chart-outlined"
+    },
+    {
+      "link": "https://open.spotify.com/user/s4i5cqkyu7n068b7f5139sl7m?si=kMeKkWd0TK-_wfRaPyeHow",
+      "label": "Spotify playlists",
+      "icon": "simple-line-icons:social-spotify"
+    }
+  ],
+  "others": [
+    {
+      "link": "https://telegram.me/unikwalls",
+      "label": "Wallpaper stash",
+      "icon": "ant-design:picture-outlined"
+    }
+  ]
+}

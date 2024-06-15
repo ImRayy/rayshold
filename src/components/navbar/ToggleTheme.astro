@@ -1,0 +1,50 @@
+---
+import Icon from "astro-icon";
+const iconClass = "w-6 transition-transform";
+---
+
+<div
+  id="darkModeToggle"
+  class="group inline-flex items-center hover:text-blue-500"
+>
+  <span id="light" class="absolute">
+    <Icon name="lucide:sun" class={`${iconClass} group-hover:rotate-12`} />
+  </span>
+  <span id="dark">
+    <Icon name="lucide:moon" class={`${iconClass} group-hover:-rotate-12`} />
+  </span>
+</div>
+<style>
+  #light,
+  html[data-theme="dark"] #dark {
+    opacity: 0;
+  }
+  #dark,
+  html[data-theme="dark"] #light {
+    opacity: 100;
+  }
+</style>
+<script is:inline>
+  const lightIcon = document.getElementById("light")?.classList;
+  const darkIcon = document.getElementById("dark")?.classList;
+
+  const handleSwitchIcon = () => {
+    lightIcon?.toggle("opacity-0");
+    darkIcon?.toggle("opacity-0");
+  };
+
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    document.documentElement.setAttribute(
+      "data-theme",
+      element.getAttribute("data-theme") !== "dark" ? "dark" : "light"
+    );
+    handleSwitchIcon();
+    const isDark = element.getAttribute("data-theme") === "dark";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
+
+  document
+    .getElementById("darkModeToggle")
+    .addEventListener("click", handleToggleClick);
+</script>

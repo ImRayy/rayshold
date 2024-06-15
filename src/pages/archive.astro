@@ -1,0 +1,28 @@
+---
+import { formatDate } from "@utils/date-utils";
+import Layout from "@layouts/Layout.astro";
+import { getSortedPosts } from "@utils/content-utils";
+
+const posts = await getSortedPosts();
+---
+
+<Layout title="Archive">
+  <div class="flex flex-col gap-2">
+    {
+      posts.map((post) => (
+        <div class="group inline-flex w-full items-center gap-6">
+          <a
+            class="whitespace-nowrap font-medium transition-transform group-hover:-translate-x-1"
+            href={`/blog/post/${post.slug}`}
+          >
+            {post.data.title}
+          </a>
+          <span class="w-full border-t border-dashed border-primary/20 group-hover:border-primary" />
+          <span class="whitespace-nowrap text-sm text-primary/50 group-hover:text-primary">
+            {formatDate(post.data.publishDate)}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

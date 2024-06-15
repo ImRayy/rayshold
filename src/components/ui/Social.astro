@@ -1,0 +1,23 @@
+---
+import Icon from "astro-icon";
+
+const socialLinks = [
+  { icon: "la:git", url: "github.com/ImRayy", width: 24 },
+  { icon: "la:telegram", url: "telegram.me/im_rayy", width: 24 },
+  { icon: "la:reddit", url: "reddit.com/user/_ImRay_", width: 26 },
+];
+---
+
+<div class="flex items-center gap-1 text-secondary-content">
+  {
+    socialLinks.map((l) => (
+      <a
+        href={`https://${l.url}`}
+        target="_blank"
+        class="rounded-full p-2 transition-colors hover:bg-primary  hover:text-primary-content"
+      >
+        <Icon name={l.icon} width={l.width} />
+      </a>
+    ))
+  }
+</div>

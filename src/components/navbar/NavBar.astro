@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon";
+import ToggleTheme from "./ToggleTheme.astro";
+
+const navLinks = [
+  { title: "Home", url: "/" },
+  { title: "Blogs", url: "/blog" },
+  { title: "Archive", url: "/archive" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="noSelect left-0 top-0 z-40 mb-6 inline-flex h-16 w-full select-none items-center justify-between text-secondary-content transition-shadow duration-500"
+  transition:persist
+>
+  <!-- Navigation Links -->
+  <ul class="inline-flex gap-5 text-lg">
+    {
+      navLinks.map((i) => (
+        <li>
+          <a
+            href={i.url}
+            class={`${
+              currentPath === i.url
+                ? "underline decoration-wavy underline-offset-4"
+                : ""
+            }`}
+          >
+            {i.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <!-- Sidebar Toggle -->
+  <div class="inline-flex items-center gap-2">
+    <!-- Dark/Light Mode Switch -->
+    <ToggleTheme />
+    <span class="h-5 w-1 border-r border-primary"></span>
+    <span
+      id="sidebar-toggle"
+      class="flex cursor-pointer items-center p-1 transition duration-150 active:scale-95 dark:hover:text-white"
+    >
+      <Icon
+        x-on:click="open = ! open"
+        name="lucide:menu"
+        class="w-6 hover:text-blue-500"
+      />
+    </span>
+  </div>
+</nav>
+
+<script src="../sidebar/toggleSiebar.ts"></script>

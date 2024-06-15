@@ -1,0 +1,32 @@
+---
+import Icon from "astro-icon";
+
+const { title, isOpen = false } = Astro.props;
+---
+
+<div class="flex flex-col justify-center rounded-md border border-secondary">
+  <button
+    id="accordion"
+    class="inline-flex items-center gap-1 bg-secondary/40 p-2"
+  >
+    <Icon name="lucide:chevron-right" size={20} />
+    {title}
+  </button>
+  <div
+    id="accordion-content"
+    class:list={["p-4 pl-8", !isOpen ? "hidden" : ""]}
+  >
+    <slot />
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("accordion");
+  const contentClass = document.getElementById("accordion-content")?.classList;
+
+  btn?.addEventListener("click", () => {
+    if (contentClass?.contains("hidden")) {
+      contentClass.remove("hidden");
+    } else contentClass?.add("hidden");
+  });
+</script>

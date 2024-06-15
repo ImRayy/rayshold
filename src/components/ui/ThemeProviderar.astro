@@ -1,0 +1,13 @@
+<script is:inline>
+  function setTheme() {
+    if (typeof localStorage !== undefined) {
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+  setTheme();
+  document.addEventListener("astro:after-swap", setTheme);
+</script>

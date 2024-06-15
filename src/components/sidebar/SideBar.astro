@@ -1,0 +1,73 @@
+---
+import NavLink from "./NavLink.astro";
+import Icon from "astro-icon";
+import Divider from "./Divider.astro";
+import Social from "@components/ui/Social.astro";
+import ProfileImage from "./ProfileImage.astro";
+import Footer from "./Footer.astro";
+import sidebarLinks from "./sidebar-links.json";
+
+interface SidebarLinks {
+  [key: string]: {
+    link: string;
+    label: string;
+    icon: string;
+  }[];
+}
+
+const links = sidebarLinks as SidebarLinks;
+---
+
+<div
+  id="sidebar-backdrop"
+  class="noSelect fixed left-0 top-0 z-50 h-full w-full -translate-x-full overflow-y-auto bg-transparent text-crust-content transition-transform duration-500 sm:p-1"
+>
+  <div
+    id="sidebar"
+    class="bg-base relative flex h-full w-72 flex-col justify-between overflow-y-auto bg-core px-4 pt-6 text-primary shadow-xl sm:rounded-lg sm:border"
+  >
+    <div class="pt-1">
+      <!-- HEADER START   -->
+      <div class="flex w-full justify-center py-2">
+        <div class="flex flex-col items-center gap-3">
+          <ProfileImage />
+          <span class="text-xs font-bold tracking-widest">
+            RAY <span class="px-1">I</span> LINUX ENTHUSIAST
+          </span>
+          <Social />
+        </div>
+      </div>
+      <!-- HEADER END -->
+      <!-- LINKS START -->
+      <div class="flex flex-col gap-3 pt-4">
+        {
+          Object.keys(links).map((key) => (
+            <>
+              <Divider>{key}</Divider>
+              <ul class="space-y-4">
+                {links[key]?.map((i) => (
+                  <li>
+                    <a href={i.link} target="_blank">
+                      <NavLink>
+                        <Icon name={i.icon} class="w-6" />
+                        {i.label}
+                      </NavLink>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))
+        }
+      </div>
+      <!-- LINKS END -->
+    </div>
+    <!-- FOOTER START -->
+    <div class="pb-4">
+      <Footer />
+    </div>
+    <!-- FOOTER END -->
+  </div>
+</div>
+
+<script src="./toggleSiebar.ts"></script>

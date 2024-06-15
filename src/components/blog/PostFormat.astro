@@ -1,0 +1,35 @@
+---
+import { formatDateTime } from "@utils/formatter";
+import Icon from "astro-icon";
+
+export interface Props {
+  FrontMatter: {
+    title: string;
+    description: string;
+    publishDate: Date;
+  };
+  slug: string;
+}
+const { FrontMatter, slug } = Astro.props;
+---
+
+<a
+  href={`/blog/post/${slug}`}
+  class="noSelect flex flex-col gap-4 rounded-lg border border-primary p-4 text-crust-content transition-transform duration-150 active:scale-95"
+>
+  <span class="font-signika border-dotted text-xl font-bold">
+    {FrontMatter.title}
+  </span>
+  <p class="line-clamp-2 text-sm sm:text-base">{FrontMatter.description}</p>
+  <div class="flex gap-3 text-xs sm:text-sm">
+    <span class="flex items-center gap-1 capitalize">
+      <Icon name="lucide:calendar" class="w-4" />
+      {formatDateTime(FrontMatter.publishDate)}
+    </span>
+    <span>|</span>
+    <span class="flex items-center gap-1 capitalize">
+      <Icon name="lucide:clock" class="w-4" />
+      4&nbsp;minutes
+    </span>
+  </div>
+</a>

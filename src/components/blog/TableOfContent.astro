@@ -1,0 +1,25 @@
+---
+import Accordion from "../ui/Accordion.astro";
+
+interface Heading {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+const { headings, isOpen = false } = Astro.props;
+---
+
+<Accordion title="Table of Contents" isOpen={isOpen}>
+  <ul class="list-disc space-y-1">
+    {
+      headings.map((h: Heading) => (
+        <li>
+          <a class="text-link hover:text-cyan-600" href={`#${h.slug}`}>
+            {h.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Accordion>
