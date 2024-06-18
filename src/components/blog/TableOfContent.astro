@@ -1,5 +1,5 @@
 ---
-import Accordion from "../ui/Accordion.astro";
+import Accordion from "@components/ui/Accordion";
 
 interface Heading {
   depth: number;
@@ -7,10 +7,10 @@ interface Heading {
   slug: string;
 }
 
-const { headings, isOpen = false } = Astro.props;
+const { headings } = Astro.props;
 ---
 
-<Accordion title="Table of Contents" isOpen={isOpen}>
+<Accordion title="Table of Contents" client:load>
   <ul class="list-disc space-y-1">
     {
       headings.map((h: Heading) => (
