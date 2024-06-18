@@ -10,7 +10,7 @@ const { Content, headings } = await entry.render();
 ---
 
 <Layout
-  title={`post | ${entry.data.title}`}
+  title={`Post | ${entry.data.title}`}
   description={entry.data.description}
 >
   <div class="text-primary">
@@ -32,8 +32,8 @@ const { Content, headings } = await entry.render();
         />
       </div>
     </div>
-    <!-- BANNER IMAGE -->
 
+    <!-- BANNER IMAGE -->
     <div class="group relative mb-6 transition-all">
       <img src={entry.data.image?.src} alt={entry.data.image?.alt} />
       {
@@ -59,6 +59,27 @@ const { Content, headings } = await entry.render();
     </div>
   </div>
 </Layout>
-<script src="./codeBlock.ts"></script>
-<script src="./callout.ts"></script>
-<script src="./image.ts"></script>
+
+<script>
+  import { addCallouts } from "./callout";
+  import { addCopyCodeButton } from "./codeBlock";
+  import { setImageSizeLikeObsidian } from "./image";
+
+  const init = () => {
+    setImageSizeLikeObsidian();
+    addCallouts();
+    addCopyCodeButton();
+  };
+
+  init();
+
+  const setup = () => {
+    window.swup?.hooks.on("page:view", init);
+  };
+
+  if (window.swup) {
+    setup();
+  } else {
+    document.addEventListener("swup:enable", setup);
+  }
+</script>

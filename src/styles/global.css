@@ -72,6 +72,18 @@ html {
   overflow-y: scroll;
 }
 
+html.is-changing .transition-fade {
+  @apply transition-all duration-200;
+}
+
+html.is-animating .transition-fade {
+  @apply translate-y-4 opacity-0;
+}
+
+html.is-leaving .transition-fade {
+  @apply translate-y-4 opacity-0;
+}
+
 * ::-webkit-scrollbar {
   @apply fixed h-1 w-2;
 }

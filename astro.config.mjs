@@ -2,6 +2,7 @@ import mdx from "@astrojs/mdx";
 import remarkToc from "remark-toc";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
+import swup from "@swup/astro";
 
 export default defineConfig({
   prefetch: true,
@@ -17,6 +18,17 @@ export default defineConfig({
     remarkPlugins: [remarkToc],
   },
   integrations: [
+    /**
+     * I'm currently using the manual method to initialize Swup to avoid the
+     * window.swup type error while globalInstance is set to true
+     * **/
+    // swup({
+    //   theme: false,
+    //   cache: true,
+    //   smoothScrolling: false,
+    //   accessibility: true,
+    //   globalInstance: true,
+    // }),
     tailwind({
       applyBaseStyles: false,
     }),

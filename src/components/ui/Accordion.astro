@@ -21,12 +21,26 @@ const { title, isOpen = false } = Astro.props;
 </div>
 
 <script>
-  const btn = document.getElementById("accordion");
-  const contentClass = document.getElementById("accordion-content")?.classList;
+  function handler() {
+    const btn = document.getElementById("accordion");
+    const contentClass =
+      document.getElementById("accordion-content")?.classList;
 
-  btn?.addEventListener("click", () => {
-    if (contentClass?.contains("hidden")) {
-      contentClass.remove("hidden");
-    } else contentClass?.add("hidden");
-  });
+    btn?.addEventListener("click", () => {
+      if (contentClass?.contains("hidden")) {
+        contentClass.remove("hidden");
+      } else contentClass?.add("hidden");
+    });
+  }
+  handler();
+
+  // Reload scripts on route change
+  const setup = () => {
+    window.swup?.hooks.on("page:view", handler);
+  };
+  if (window.swup) {
+    setup();
+  } else {
+    document.addEventListener("swup:enable", setup);
+  }
 </script>

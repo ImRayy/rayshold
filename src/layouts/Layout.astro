@@ -52,12 +52,13 @@ const {
     <ThemeProviderar />
   </head>
   <body
-    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-josefinSans text-primary"
+    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-josefinSans text-primary transition"
   >
     <SideBar />
-    <main class="w-full max-w-2xl">
-      <NavBar />
+    <NavBar />
+    <main id="swup" class="transition-fade w-full max-w-2xl">
       <slot />
     </main>
+    <script src="../lib/swup.ts"></script>
   </body>
 </html>
