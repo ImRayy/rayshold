@@ -1,9 +1,13 @@
 import { getCollection } from "astro:content";
+import type { PostType } from "src/content/config";
 
 export async function getSortedPosts() {
-  const allBlogPosts = await getCollection("blog", ({ data }) => {
-    return data.draft !== true;
-  });
+  const allBlogPosts: PostType[] = await getCollection(
+    "blog",
+    (p: PostType) => {
+      return p.data.draft !== true;
+    }
+  );
 
   allBlogPosts.sort((a, b) =>
     new Date(a.data.publishDate).getTime() >

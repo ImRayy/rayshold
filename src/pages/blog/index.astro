@@ -1,9 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import MetaInfo from "@components/blog/MetaInfo.astro";
 import { getWordsCount } from "@utils/helpers";
-import Icon from "astro-icon";
 import { getSortedPosts } from "@utils/content-utils";
+import CardFormat from "./CardFormat.astro";
+import type { PostType } from "src/content/config";
 
 const allBlogPosts = await getSortedPosts();
 ---
@@ -11,45 +11,15 @@ const allBlogPosts = await getSortedPosts();
 <Layout title="Blogs">
   <div class="space-y-6">
     {
-      allBlogPosts.map((post) => (
-        <div class="flex w-full flex-col gap-4 sm:flex-row">
-          {/* BANNER IMAGE */}
-          <div class="w-full overflow-hidden rounded-xl shadow-xl md:w-3/6">
-            <img
-              src={post.data.image?.src}
-              alt={post.data.title}
-              class="h-full"
-            />
-          </div>
-          <div class="inline-flex w-full items-center md:w-3/6">
-            {/* DATE & READING TIME */}
-            <div>
-              <div class="mb-4 flex flex-col-reverse space-y-2 md:mb-0 md:flex-col">
-                <MetaInfo
-                  date={post.data.publishDate}
-                  showWordCount={false}
-                  words={getWordsCount(post.body)}
-                />
-                {/* TITLE & DESCRIPTION */}
-                <h3 class="font-inte text-xl font-medium">{post.data.title}</h3>
-              </div>
-              <p class="line-clamp-2 text-sm font-normal text-primary/80">
-                {post.data.description}
-              </p>
-              {/* POST LINK */}
-              <a
-                href={`/blog/post/${post.slug}`}
-                class="group mt-4 inline-flex items-center gap-1"
-              >
-                <span class="font-medium">Read Post</span>
-                <Icon
-                  name="lucide:arrow-right"
-                  class="w-5 transition-transform duration-300 group-hover:translate-x-2  group-hover:rotate-0"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
+      allBlogPosts.map((post: PostType) => (
+        <CardFormat
+          slug={post.slug}
+          title={post.data.title}
+          description={post.data.description}
+          image={post.data.image}
+          publishdDate={post.data.publishDate}
+          wordsCount={getWordsCount(post.body)}
+        />
       ))
     }
   </div>
