@@ -1,0 +1,60 @@
+---
+import MetaInfo from "@components/blog/MetaInfo.astro";
+import Icon from "astro-icon";
+import Image from "astro/components/Image.astro";
+
+type ImageType = {
+  src: string;
+  alt: string;
+};
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  image: ImageType | undefined;
+  publishdDate: Date;
+  wordsCount: number;
+}
+
+const { slug, title, description, image, publishdDate, wordsCount } =
+  Astro.props;
+---
+
+<div class="flex w-full flex-col gap-4 sm:flex-row">
+  {/* BANNER IMAGE */}
+  {
+    image && (
+      <div class="w-full overflow-hidden rounded-xl shadow-xl md:w-3/6">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          class="h-full"
+          inferSize={true}
+        />
+      </div>
+    )
+  }
+  <div class="flex w-full flex-col justify-center md:w-3/6">
+    {/* DATE & READING TIME */}
+    <div class="mb-4 flex flex-col-reverse space-y-2 pt-2 md:mb-0 md:flex-col">
+      <MetaInfo date={publishdDate} showWordCount={false} words={wordsCount} />
+      {/* TITLE & DESCRIPTION */}
+      <h3 class="font-inte pb-1 text-xl font-medium">{title}</h3>
+    </div>
+    <p class="line-clamp-2 text-sm font-normal text-primary/80">
+      {description}
+    </p>
+    {/* POST LINK */}
+    <a
+      href={`/blog/post/${slug}`}
+      class="group mt-4 inline-flex items-center gap-1"
+    >
+      <span class="font-medium">Read Post</span>
+      <Icon
+        name="lucide:arrow-right"
+        class="w-5 transition-transform duration-300 group-hover:translate-x-2 group-hover:rotate-0"
+      />
+    </a>
+  </div>
+</div>
