@@ -95,8 +95,8 @@ export function addCallouts() {
         break;
       default:
         wrapperTitle.prepend(quoteIcon);
-        wrapper.classList.add(`border-primary`);
-        wrapperTitle.classList.add(`border-primary`, "bg-secondary");
+        wrapper.classList.add(`border-border`);
+        wrapperTitle.classList.add(`border-border`, "bg-secondary");
         break;
     }
 

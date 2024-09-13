@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import MetaInfo from "@components/blog/MetaInfo.astro";
 import { getWordsCount } from "../../utils/helpers";
 import TableOfContent from "@components/blog/TableOfContent.astro";
+import "../../styles/markdown.css";
 
 const { entry } = Astro.props;
 const words = getWordsCount(entry.body);
@@ -16,13 +17,11 @@ const { Content, headings } = await entry.render();
   <div class="text-primary">
     <div class="pb-4">
       <!-- TITLE -->
-      <h1
-        class="select-none pb-4 text-center text-4xl capitalize text-core-content"
-      >
+      <h1 class="select-none pb-4 text-4xl capitalize text-core-content">
         {entry.data.title}
       </h1>
       <div
-        class="flex select-none items-center justify-center gap-3 pb-4 font-medium text-secondary-content"
+        class="flex select-none items-center gap-3 pb-4 font-medium text-secondary-content"
       >
         <MetaInfo
           date={entry.data.publishDate}
@@ -34,12 +33,13 @@ const { Content, headings } = await entry.render();
     </div>
 
     <!-- BANNER IMAGE -->
-    <div class="group relative mb-6 transition-all">
+    <div
+      class="group relative mb-6 overflow-hidden rounded-xl shadow-xl transition-all"
+    >
       <img src={entry.data.image?.src} alt={entry.data.image?.alt} />
       {
         entry.data.image?.caption && (
           <div class="absolute bottom-0 hidden h-10 w-full  items-center gap-1 bg-black/40 p-2 backdrop-blur-sm group-hover:inline-flex">
-            <span class="font-bold">source: </span>
             <a
               href={entry.data.image?.caption}
               class="truncate text-white hover:underline"

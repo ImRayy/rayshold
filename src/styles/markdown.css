@@ -1,45 +1,61 @@
-/* Markdown */
+@tailwind base;
 
-/* Base */
-.markdown {
-  @apply prose max-w-full prose-img:rounded-md;
+@layer base {
+  :root,
+  html[data-theme="light"] {
+    --h2: #89b4fa;
+    --h3: #40a02b;
+    --h4: #179299;
+    --h5: #7287fd;
+    --h6: #893bef;
+  }
+
+  html[data-theme="dark"] {
+    --h2: #ee9598;
+    --h3: #a6e3a1;
+    --h4: #94e2d5;
+    --h5: #beade6;
+    --h6: #ca97e8;
+  }
 }
 
-/* Headings */
-.markdown {
-  @apply text-xl prose-headings:mb-4 prose-headings:mt-12  prose-headings:font-josefinSans prose-headings:font-medium prose-headings:text-primary prose-h2:text-secondary-content;
+.prose {
+  @apply max-w-full text-secondary-content prose-headings:mt-8 prose-headings:border-l-4 prose-headings:pl-3  prose-headings:font-roboto prose-headings:font-medium prose-headings:text-primary  prose-p:mt-4 prose-p:break-words prose-a:text-link prose-a:no-underline prose-strong:text-primary prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
 }
 
-/* Paragraph */
-.markdown {
-  @apply prose-p:font-inter prose-p:text-md prose-p:leading-7 prose-p:text-crust-content;
+.prose h2 {
+  border-color: var(--h2);
+}
+.prose h3 {
+  border-color: var(--h3);
+}
+.prose h4 {
+  border-color: var(--h4);
+}
+.prose h5 {
+  border-color: var(--h5);
+}
+.prose h6 {
+  border-color: var(--h6);
 }
 
-/* Font Weight */
-.markdown {
-  @apply prose-strong:text-md prose-strong:font-semibold prose-strong:leading-8 prose-strong:text-primary prose-em:text-crust-content;
+.prose a:hover {
+  text-decoration: underline wavy;
+  text-underline-offset: 2px;
 }
 
-/* Link */
-.markdown {
-  @apply prose-a:text-md  prose-a:font-normal  prose-a:text-primary prose-a:decoration-link prose-a:decoration-solid prose-a:underline-offset-4 hover:prose-a:text-link;
+.prose hr {
+  @apply m-0 border-primary;
 }
 
-/* List */
-.markdown {
-  @apply dark:prose-li:text-gray-400;
+.prose pre {
+  @apply rounded border border-border;
 }
 
-/* Codeblock */
-.markdown {
-  @apply prose-code:mx-1 prose-code:rounded-sm prose-code:bg-crust prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-code:font-semibold prose-code:text-crust-content prose-pre:my-5 prose-pre:select-text prose-pre:overflow-x-auto prose-pre:rounded-md prose-pre:bg-accent prose-pre:px-6 prose-pre:py-4;
+.prose pre code {
+  @apply border-none bg-transparent p-0;
 }
 
-.markdown pre code {
-  @apply mx-0 bg-transparent p-0 font-medium text-gray-200;
-}
-
-/* Horizontal Line */
-.markdown {
-  @apply prose-hr:border-gray-200 dark:prose-hr:border-gray-600;
+.prose code {
+  @apply rounded border border-border bg-secondary/40 px-2 py-0.5 text-primary;
 }

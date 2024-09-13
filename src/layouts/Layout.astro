@@ -3,8 +3,6 @@ import NavBar from "@components/navbar/NavBar.astro";
 import SideBar from "@components/sidebar/SideBar.astro";
 import ThemeProviderar from "@components/ui/ThemeProviderar.astro";
 import "../styles/global.css";
-import "../styles/markdown.css";
-import "../styles/markdownv2.css";
 
 export interface Props {
   title?: string;
@@ -52,7 +50,7 @@ const {
     <ThemeProviderar />
   </head>
   <body
-    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-josefinSans text-primary transition"
+    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-roboto text-primary transition"
   >
     <SideBar />
     <NavBar />

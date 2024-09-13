@@ -9,6 +9,9 @@ export default {
       typography: {
         DEFAULT: {
           css: {
+            "code::before": {
+              content: "none",
+            },
             blockquote: {
               "p:first-of-type::before": { content: "none" },
               "p:first-of-type::after": { content: "none" },
@@ -38,7 +41,7 @@ export default {
           content: "rgb(var(--color-secondary-content) / <alpha-value>)",
         },
         link: "rgb(var(--color-link) / <alpha-value>)",
-        border: "rgb(var(--color-primary) / <alpha-value>)",
+        border: "rgb(var(--color-border) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
         success: "rgb(var(--color-success) / <alpha-value>)",
         info: "rgb(var(--color-info) / <alpha-value>)",
@@ -51,6 +54,7 @@ export default {
       fontFamily: {
         josefinSans: "Josefin Sans, 'sans-serif'",
         inter: "Inter, 'sans-serif'",
+        roboto: "'Roboto', sans-serif",
       },
     },
   },

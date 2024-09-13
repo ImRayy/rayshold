@@ -15,13 +15,13 @@ const { FrontMatter, slug } = Astro.props;
 
 <a
   href={`/blog/post/${slug}`}
-  class="noSelect flex flex-col gap-4 rounded-lg border border-primary p-4 text-crust-content transition-transform duration-150 active:scale-95"
+  class="noSelect flex flex-col gap-2 rounded-lg border border-border p-4 text-crust-content transition-transform duration-150 active:scale-95"
 >
-  <span class="font-signika border-dotted text-xl font-bold">
+  <span class="border-dotted text-xl font-medium">
     {FrontMatter.title}
   </span>
-  <p class="line-clamp-2 text-sm sm:text-base">{FrontMatter.description}</p>
-  <div class="flex gap-3 text-xs sm:text-sm">
+  <p class="line-clamp-2 text-sm">{FrontMatter.description}</p>
+  <div class="flex gap-3 pt-3 text-xs">
     <span class="flex items-center gap-1 capitalize">
       <Icon name="lucide:calendar" class="w-4" />
       {formatDateTime(FrontMatter.publishDate)}

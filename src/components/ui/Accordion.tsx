@@ -4,9 +4,10 @@ import { ChevronDown } from "lucide-react";
 interface AccordionProps {
   title: string;
   children: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
-const Accordion = ({ title, children }: AccordionProps) => {
+const Accordion = ({ title, children, icon }: AccordionProps) => {
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   return (
@@ -16,6 +17,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
         className="inline-flex items-center gap-1 bg-secondary/40 p-2"
         onClick={() => setOpen((prev) => !prev)}
       >
+        {icon}
         <span className="inline-flex w-full justify-between px-1 ">
           {title}
           <ChevronDown
