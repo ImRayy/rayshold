@@ -9,12 +9,14 @@ export interface Props {
   description?: string;
   url?: string;
   ogImage?: string;
+  className?: string;
 }
 const {
   title = "Ray's Hold",
   description = "Insights, experiences, and quick guides—dive into my tech journey covering web dev, Linux, and software adventures",
   url = new URL(Astro.url).href,
   ogImage = "https://res.cloudinary.com/strapibackendproject/image/upload/v1701538563/rayshold/rayshold.webp",
+  className,
 } = Astro.props;
 ---
 
@@ -50,11 +52,14 @@ const {
     <ThemeProviderar />
   </head>
   <body
-    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-roboto text-primary transition"
+    class="flex min-h-screen flex-col items-center scroll-smooth bg-core px-4 pb-24 font-roboto text-core-content transition"
   >
     <SideBar />
     <NavBar />
-    <main id="swup" class="transition-fade w-full max-w-2xl">
+    <main
+      id="swup"
+      class:list={["transition-fade w-full max-w-2xl", className]}
+    >
       <slot />
     </main>
     <script src="../lib/swup.ts"></script>

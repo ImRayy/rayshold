@@ -23,7 +23,6 @@ export default {
         },
       },
       colors: {
-        hover: "#35353b",
         core: {
           DEFAULT: "rgb(var(--color-core) / <alpha-value>)",
           content: "rgb(var(--color-core-content) / <alpha-value>)",
@@ -40,6 +39,8 @@ export default {
           DEFAULT: "rgb(var(--color-secondary) / <alpha-value>)",
           content: "rgb(var(--color-secondary-content) / <alpha-value>)",
         },
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        hover: "rgb(var(--color-hover) / <alpha-value>)",
         link: "rgb(var(--color-link) / <alpha-value>)",
         border: "rgb(var(--color-border) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",

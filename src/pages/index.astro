@@ -7,7 +7,7 @@ const allBlogPosts = await getSortedPosts();
 ---
 
 <Layout title="Home">
-  <div class="space-y-4 text-core-content md:flex-row md:gap-14">
+  <div class="space-y-4 md:flex-row md:gap-14">
     <p class="text-3xl font-bold">Sup! I'm Ray</p>
     <p>
       ... I love building things. When I'm bored, I tinker with my Linux distro
@@ -17,21 +17,23 @@ const allBlogPosts = await getSortedPosts();
     </p>
   </div>
   <div
-    class="mb-6 mt-10 inline-flex w-full justify-between font-bold text-core-content"
+    class="mb-6 mt-10 inline-flex w-full items-end justify-between font-bold"
   >
     <span>Recent Posts</span>
-    <a href="/blogs" class="font-normal underline underline-offset-4"
+    <a href="/blogs" class="text-sm font-normal underline underline-offset-4"
       >View All</a
     >
   </div>
-  <div class="flex flex-col gap-4">
-    {
-      allBlogPosts.map((blogPostEntry) => (
+  <hr class="mb-4 border-border" />
+  {
+    allBlogPosts.map((blogPostEntry, idx, self) => (
+      <Fragment>
         <PostFormat
           FrontMatter={blogPostEntry.data}
           slug={blogPostEntry.slug}
         />
-      ))
-    }
-  </div>
+        <hr class="my-4 border-border" />
+      </Fragment>
+    ))
+  }
 </Layout>

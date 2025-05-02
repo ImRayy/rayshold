@@ -20,7 +20,7 @@
 }
 
 .prose {
-  @apply max-w-full text-secondary-content prose-headings:mt-8 prose-headings:border-l-4 prose-headings:pl-3  prose-headings:font-roboto prose-headings:font-medium prose-headings:text-primary  prose-p:mt-4 prose-p:break-words prose-a:text-link prose-a:no-underline prose-strong:text-primary prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
+  @apply max-w-full text-core-content prose-headings:mt-8 prose-headings:border-l-4 prose-headings:pl-3  prose-headings:font-roboto prose-headings:font-medium prose-headings:text-core-content  prose-p:mt-4 prose-p:break-words prose-a:text-link prose-a:no-underline prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
 }
 
 .prose h2 {
@@ -57,5 +57,5 @@
 }
 
 .prose code {
-  @apply rounded border border-border bg-secondary/40 px-2 py-0.5 text-primary;
+  @apply rounded border border-border bg-secondary/40 px-2 py-0.5 text-core-content;
 }
