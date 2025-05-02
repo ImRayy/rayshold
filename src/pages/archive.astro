@@ -1,28 +1,63 @@
 ---
-import { formatDate } from "@utils/date-utils";
 import Layout from "@layouts/Layout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import { getPostsByYear } from "@utils/content-utils";
+import dayjs from "dayjs";
 
-const posts = await getSortedPosts();
+const posts = await getPostsByYear();
 ---
 
 <Layout title="Archive">
-  <div class="flex flex-col gap-2">
-    {
-      posts.map((post) => (
-        <div class="group inline-flex w-full items-center gap-6">
-          <a
-            class="whitespace-nowrap font-medium transition-transform group-hover:-translate-x-1"
-            href={`/blogs/post/${post.slug}`}
-          >
-            {post.data.title}
-          </a>
-          <span class="w-full border-t border-dashed border-primary/20 group-hover:border-primary" />
-          <span class="whitespace-nowrap text-sm text-primary/50 group-hover:text-primary">
-            {formatDate(post.data.publishDate)}
-          </span>
+  {
+    Object.entries(posts).map(([year, posts]) => (
+      <div class="pb-4">
+        <div class="flex items-center pb-4">
+          <div class="w-14 text-2xl font-semibold">{year}</div>
+          <div class="flex w-[15%] items-start justify-center md:w-[12%]">
+            <span class="block size-4 rounded-full border-4" />
+          </div>
+          <span class="text-core-content/50">{posts.length} Posts</span>
         </div>
-      ))
-    }
-  </div>
+        <div>
+          {posts.map((post) => (
+            <a
+              href={`/blogs/post/${post.slug}`}
+              class="group flex items-center rounded-lg hover:bg-hover"
+            >
+              <div class="w-14 shrink-0 text-end text-sm text-core-content/50">
+                {dayjs(post.data.publishDate).format("DD MMM")}
+              </div>
+              <div
+                id="indicator"
+                class="flex h-10 w-[15%] shrink-0 items-center  md:w-[12%]"
+              >
+                <span class="mx-auto block h-1 w-1 rounded-full bg-white transition-all duration-300 group-hover:h-5" />
+              </div>
+              <div class="inline-flex w-full items-center justify-between">
+                <span class="font-semibold text-core-content/80 transition-transform duration-300 hover:text-core-content group-hover:translate-x-2">
+                  {post.data.title}
+                </span>
+                <span class="hidden w-1/4 truncate whitespace-nowrap text-sm capitalize text-core-content/50 sm:block">
+                  #{post.data.tags.join(" #")}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </Layout>
+
+<style>
+  #indicator {
+    position: relative;
+  }
+  #indicator::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: calc(50% - 1px);
+    border-left: 2px dashed rgb(var(--color-core-content) / 0.1);
+    transform: translateY(-50%);
+  }
+</style>
