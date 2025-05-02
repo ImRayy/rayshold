@@ -1,0 +1,19 @@
+---
+import dayjs from "dayjs";
+import Icon from "astro-icon";
+---
+
+<div
+  class="font-rubik flex h-full w-full flex-col items-center gap-1 pt-5 text-xs tracking-wide text-accent"
+>
+  <div>
+    Copyright © <span class="font-bold">rayshold</span>
+    <span class="mx-1.5 font-bold text-gray-400">I</span>2023 - {dayjs().year()}
+  </div>
+  <div class="inline-flex gap-1">
+    Made by <span class="font-bold">RAY</span>
+    <Icon name="octicon:heart-16" class="w-4" />
+    &amp;
+    <Icon name="octicon:zap-16" class="w-4" />
+  </div>
+</div>

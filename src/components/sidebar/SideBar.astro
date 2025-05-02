@@ -1,10 +1,10 @@
 ---
 import NavLink from "./NavLink.astro";
 import Icon from "astro-icon";
-import Divider from "./Divider.astro";
 import Social from "@components/ui/Social.astro";
 import ProfileImage from "./ProfileImage.astro";
-import Footer from "./Footer.astro";
+import Divider from "./Divider.astro";
+import SidebarFooter from "./SidebarFooter.astro";
 import sidebarLinks from "./sidebar-links.json";
 
 interface SidebarLinks {
@@ -20,54 +20,78 @@ const links = sidebarLinks as SidebarLinks;
 
 <div
   id="sidebar-backdrop"
-  class="noSelect fixed left-0 top-0 z-50 h-full w-full -translate-x-full overflow-y-auto bg-transparent text-crust-content transition-transform duration-500 sm:p-1"
+  class="fixed inset-0 z-20 bg-black/70 transition-opacity duration-300"
 >
-  <div
-    id="sidebar"
-    class="bg-base relative flex h-full w-72 flex-col justify-between overflow-y-auto border-border bg-core px-4 pt-6 text-primary shadow-xl sm:rounded-lg sm:border"
-  >
-    <div class="pt-1">
-      <!-- HEADER START   -->
-      <div class="flex w-full justify-center py-2">
-        <div class="flex flex-col items-center gap-3">
-          <ProfileImage />
-          <span class="text-xs font-bold tracking-widest">
-            RAY <span class="px-1">I</span> LINUX ENTHUSIAST
-          </span>
-          <Social />
-        </div>
-      </div>
-      <!-- HEADER END -->
-      <!-- LINKS START -->
-      <div class="flex flex-col gap-3 pt-4">
-        {
-          Object.keys(links).map((key) => (
-            <>
-              <Divider>{key}</Divider>
-              <ul class="space-y-4">
-                {links[key]?.map((i) => (
-                  <li>
-                    <a href={i.link} target="_blank">
-                      <NavLink>
-                        <Icon name={i.icon} class="w-6" />
-                        {i.label}
-                      </NavLink>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ))
-        }
-      </div>
-      <!-- LINKS END -->
-    </div>
-    <!-- FOOTER START -->
-    <div class="pb-4">
-      <Footer />
-    </div>
-    <!-- FOOTER END -->
-  </div>
 </div>
+<div
+  id="sidebar"
+  class="bg-base fixed left-0 z-30 flex h-full w-72 -translate-x-full flex-col justify-between overflow-y-auto border-border bg-core px-4 pt-6 text-primary shadow-xl transition-transform duration-300 sm:rounded-lg sm:border"
+>
+  <div class="pt-1">
+    <!-- HEADER START   -->
+    <div class="flex w-full justify-center py-2">
+      <div class="flex flex-col items-center gap-3">
+        <ProfileImage />
+        <div
+          class="inline-flex w-full items-center justify-center text-xs font-bold"
+        >
+          <span class="tracking-widest">RAY</span>
+          <Icon name="bi:dot" class="w-5" />
+          <a
+            href="https://www.16personalities.com/profiles/isfj-t/m/7t0bkptmp"
+            target="_blank"
+            class="tracking-widest">ISFJ-T</a
+          >
+          <Icon name="bi:dot" class="w-5" />
+          <span class="tracking-widest">LOVES LINUX</span>
+        </div>
+        <Social />
+      </div>
+    </div>
+    <!-- HEADER END -->
+    <!-- LINKS START -->
+    <div class="flex flex-col gap-3 pt-4">
+      {
+        Object.keys(links).map((key) => (
+          <Fragment>
+            <Divider>{key}</Divider>
+            <ul class="space-y-4">
+              {links[key]?.map((i) => (
+                <li>
+                  <a href={i.link} target="_blank">
+                    <NavLink>
+                      <Icon name={i.icon} class="w-6" />
+                      {i.label}
+                    </NavLink>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Fragment>
+        ))
+      }
+    </div>
+    <!-- LINKS END -->
+  </div>
+  <!-- FOOTER START -->
+  <div class="pb-4">
+    <SidebarFooter />
+  </div>
+  <!-- FOOTER END -->
+</div>
+
+<style>
+  #sidebar-backdrop {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #sidebar-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+</style>
 
 <script src="./toggleSiebar.ts"></script>

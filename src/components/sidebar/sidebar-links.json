@@ -2,25 +2,30 @@
   "interests": [
     {
       "link": "https://anilist.co/user/ImRay/",
-      "label": "Anime I watched",
-      "icon": "ant-design:aliwangwang-outlined"
-    },
-    {
-      "link": "http://stats.fm/s4i5cqkyu7n068b7f5139sl7m",
-      "label": "Spotify stats",
-      "icon": "ant-design:bar-chart-outlined"
+      "label": "My AniList",
+      "icon": "fluent:animal-cat-24-regular"
     },
     {
       "link": "https://open.spotify.com/user/s4i5cqkyu7n068b7f5139sl7m?si=kMeKkWd0TK-_wfRaPyeHow",
-      "label": "Spotify playlists",
-      "icon": "simple-line-icons:social-spotify"
+      "label": "Playlists",
+      "icon": "tabler:brand-spotify"
+    },
+    {
+      "link": "https://goodreads.com/rayshold",
+      "label": "Books",
+      "icon": "tabler:bookmarks"
+    },
+    {
+      "link": "https://trakt.tv/users/imray",
+      "label": "Movies & Shows",
+      "icon": "ri:movie-2-line"
     }
   ],
   "others": [
     {
       "link": "https://telegram.me/unikwalls",
-      "label": "Wallpaper stash",
-      "icon": "ant-design:picture-outlined"
+      "label": "Walls stash",
+      "icon": "tabler:photo"
     }
   ]
 }

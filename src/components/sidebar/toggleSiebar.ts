@@ -4,20 +4,22 @@ function toggleClass(element: Element, className: string) {
 
 // Buttons
 const toggleSidebarButton = document.getElementById("sidebar-toggle");
-const sidebarAckdrop = document.getElementById("sidebar-backdrop");
 
 // Prevent click event on sidebar
 document.getElementById("sidebar")?.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 
-sidebarAckdrop?.addEventListener("click", toggleSidebar);
+const sideBar = document.getElementById("sidebar");
+const html = document.documentElement;
+const backdrop = document.getElementById("sidebar-backdrop");
+
+backdrop?.addEventListener("click", toggleSidebar);
 toggleSidebarButton?.addEventListener("click", toggleSidebar);
 
-// Toggle didebar main logic
 function toggleSidebar() {
-  const sideBar = document.getElementById("sidebar-backdrop");
-  if (sideBar) {
-    toggleClass(sideBar, "-translate-x-full");
-  }
+  sideBar && toggleClass(sideBar, "-translate-x-full");
+  html && toggleClass(html, "overflow-y-hidden");
+  backdrop && toggleClass(backdrop, "active");
+  backdrop && backdrop.setAttribute("data-state", "active");
 }
