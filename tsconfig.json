@@ -1,22 +1,16 @@
 {
-  "extends": "astro/tsconfigs/strictest",
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "target": "ESNext",
-    "strict": true,
-    "isolatedModules": true,
-    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"]
     },
-    "plugins": [
-      {
-        "name": "@astro/ts-plugin"
-      }
-    ],
-    "tsx": "react-tsx",
-    "tsxImportSource": "react"
+    "plugins": [{"name": "@astro/ts-plugin"}],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
