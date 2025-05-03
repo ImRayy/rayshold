@@ -26,7 +26,7 @@ const allBlogPosts = await getSortedPosts();
   </div>
   <hr class="mb-4 border-border" />
   {
-    allBlogPosts.map((blogPostEntry, idx, self) => (
+    allBlogPosts.map((blogPostEntry) => (
       <Fragment>
         <PostFormat
           FrontMatter={blogPostEntry.data}

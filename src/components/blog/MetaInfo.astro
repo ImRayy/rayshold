@@ -1,41 +1,51 @@
 ---
-import Icon from "astro-icon";
-import { formatDateTime } from "@utils/formatter";
+import dayjs from "dayjs";
 
 export interface Props {
   date: Date;
   words: number;
-  showWordCount?: boolean;
-  className?: string;
 }
-const { date, words, showWordCount = true, className } = Astro.props;
+
+const { date, words } = Astro.props;
 
 const defaultClasses =
-  "inline-flex text-sm  gap-1 text-primary/70 items-center font-medium";
+  "inline-flex text-sm  gap-1 text-primary/70 items-center";
 ---
 
-<div class="flex items-center gap-2">
-  <span class={`capitalize ${defaultClasses}`}>
-    <!-- <i data-lucide="calendar-range"></i> -->
-    <Icon name="lucide:calendar" size={17} />
-    <span> {formatDateTime(date)}</span>
+<!-- PUBLISH DATE -->
+<span class={`capitalize ${defaultClasses}`}>
+  <span id="header-icons">
+    <span class="iconify tabler--calendar-event"></span>
   </span>
-  <span class="h-3 border border-primary/50"></span>
-  <span class={defaultClasses}>
-    <Icon name="lucide:clock" size={17} />
-    <span>
-      {Math.ceil(words / 200)}&nbsp;Min. read
-    </span>
+  <span> {dayjs(date).format("DD/mm/YYYY")}</span>
+</span>
+
+<!-- READING TIME -->
+
+<span class={defaultClasses}>
+  <span id="header-icons">
+    <span id="icon" class="iconify tabler--clock-hour-4"></span>
   </span>
-  {
-    showWordCount && (
-      <>
-        <span>|</span>
-        <span class={defaultClasses}>
-          <Icon name="lucide:edit-3" class={`w-4 ${className}`} />
-          {words}
-        </span>
-      </>
-    )
+  <span>
+    {Math.ceil(words / 200)}{" "}Min.
+  </span>
+</span>
+
+<!-- WORD COUNT -->
+
+<span class={defaultClasses}>
+  <span id="header-icons">
+    <span id="icon" class="iconify tabler--pencil"></span>
+  </span>
+  {words} Words.
+</span>
+
+<style>
+  .iconify {
+    @apply text-lg text-core-content/80;
   }
-</div>
+
+  #header-icons {
+    @apply flex size-7 items-center justify-center rounded-md bg-hover p-0;
+  }
+</style>

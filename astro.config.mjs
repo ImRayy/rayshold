@@ -2,11 +2,16 @@ import mdx from "@astrojs/mdx";
 import remarkToc from "remark-toc";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
-import swup from "@swup/astro";
+import rehypeComponents from "rehype-components";
+import remarkDirective from "remark-directive";
 import react from "@astrojs/react";
+import { parseDirectiveNode } from "./src/plugins/remark/directive-rehype";
+import { externalLink } from "./src/plugins/rehype/externalLink";
+import { CalloutComponent } from "./src/plugins/rehype/callout";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.rayshold.vercel.app/",
   image: {
     domains: ["ik.imagekit.io"],
   },
@@ -16,10 +21,25 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: "css-variables",
+      theme: "aurora-x",
       langs: ["ts", "tsx", "go", "astro", "py", "lua"],
     },
-    remarkPlugins: [remarkToc],
+    remarkPlugins: [remarkToc, remarkDirective, parseDirectiveNode],
+    rehypePlugins: [
+      [externalLink, { domain: "rayshold.vercel.app" }],
+      [
+        rehypeComponents,
+        {
+          components: {
+            tip: (x, y) => CalloutComponent(x, y, "tip"),
+            note: (x, y) => CalloutComponent(x, y, "note"),
+            important: (x, y) => CalloutComponent(x, y, "important"),
+            caution: (x, y) => CalloutComponent(x, y, "caution"),
+            warning: (x, y) => CalloutComponent(x, y, "warning"),
+          },
+        },
+      ],
+    ],
   },
   integrations: [
     /**

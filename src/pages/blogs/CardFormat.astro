@@ -1,5 +1,4 @@
 ---
-// import MetaInfo from "@components/blog/MetaInfo.astro";
 import Icon from "astro-icon";
 import { Image } from "astro:assets";
 
@@ -38,7 +37,6 @@ const { slug, title, description, image } = Astro.props;
   <div class="flex w-full flex-col justify-center md:w-3/6">
     {/* DATE & READING TIME */}
     <div class="mb-4 flex flex-col-reverse space-y-2 pt-2 md:mb-0 md:flex-col">
-      <!-- <MetaInfo date={publishdDate} showWordCount={false} words={wordsCount} /> -->
       {/* TITLE & DESCRIPTION */}
       <h3 class="pb-1 font-roboto text-xl font-medium">{title}</h3>
     </div>

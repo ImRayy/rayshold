@@ -1,77 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("./variables.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root,
-  html[data-theme="light"] {
-    --color-core: 247 247 247;
-    --color-core-content: 35 31 32;
-    --color-crust: 244 244 245;
-    --color-crust-content: 24 24 27;
-    --color-primary: 39 39 42;
-    --color-primary-content: 244 244 245;
-    --color-secondary: 226 232 240;
-    --color-secondary-content: 39 39 42;
-    --color-link: 59 130 246;
-    --color-border: 228 228 231;
-    --color-hover: 235 235 235;
-    --color-muted: 82 82 91;
-
-    --color-success: 34 197 94;
-    --color-info: 59 130 246;
-    --color-alert: 251 191 36;
-    --color-error: 239 68 68;
-
-    /* Codeblock */
-    --astro-code-color-text: #2a2a2a;
-    --astro-code-color-background: #f8fafc;
-    --astro-code-token-comment: #9ca0b1;
-    --astro-code-token-keyword: #7847bd;
-    --astro-code-token-string: #ae42a0;
-    --astro-code-token-function: #fe650d;
-    --astro-code-token-constant: #fe6924;
-    --astro-code-token-parameter: #595a73;
-    --astro-code-token-string-expression: #41a02d;
-    --astro-code-token-punctuation: #8996a3;
-    --astro-code-token-link: #8d49f0;
-  }
-
-  html[data-theme="dark"] {
-    --color-core: 24 24 27;
-    --color-core-content: 209 213 219;
-    --color-crust: 31 31 34;
-    --color-crust-content: 209 213 219;
-    --color-primary: 254 254 255;
-    --color-primary-content: 39 39 42;
-    --color-secondary: 39 39 42;
-    --color-secondary-content: 212 212 216;
-    --color-link: 180 190 254;
-    --color-border: 39 39 42;
-    --color-hover: 39 39 42;
-    --color-muted: 161 161 170;
-
-    --color-success: 34 197 94;
-    --color-info: 96 165 250;
-    --color-alert: 252 211 77;
-    --color-error: 248 113 113;
-
-    /* Codeblock */
-    --astro-code-color-text: #f4f4f5;
-    --astro-code-color-background: rgb(var(--color-crust));
-    --astro-code-token-comment: #71717a;
-    --astro-code-token-keyword: #a78bfa;
-    --astro-code-token-string: #ae42a0;
-    --astro-code-token-function: #f97316;
-    --astro-code-token-constant: #f97316;
-    --astro-code-token-parameter: #fafafa;
-    --astro-code-token-string-expression: #56c93e;
-    --astro-code-token-punctuation: #8996a3;
-    --astro-code-token-link: #8d49f0;
-  }
-}
 
 /* Scrollbar */
 html {
@@ -90,6 +22,10 @@ html.is-leaving .transition-fade {
   @apply translate-y-4 opacity-0;
 }
 
+body {
+  @apply border-border;
+}
+
 * ::-webkit-scrollbar {
   @apply fixed h-1 w-2;
 }
@@ -99,9 +35,7 @@ html.is-leaving .transition-fade {
 * ::-webkit-scrollbar-thumb {
   @apply cursor-pointer rounded-md bg-zinc-200 dark:bg-hover;
 }
-.info-button {
-  @apply flex h-8 items-center gap-2 whitespace-nowrap rounded-full bg-gray-200 px-4 font-medium dark:bg-hover;
-}
+
 .noSelect {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;

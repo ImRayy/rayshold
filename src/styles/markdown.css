@@ -1,61 +1,60 @@
 @tailwind base;
 
-@layer base {
-  :root,
-  html[data-theme="light"] {
-    --h2: #89b4fa;
-    --h3: #40a02b;
-    --h4: #179299;
-    --h5: #7287fd;
-    --h6: #893bef;
-  }
-
-  html[data-theme="dark"] {
-    --h2: #ee9598;
-    --h3: #a6e3a1;
-    --h4: #94e2d5;
-    --h5: #beade6;
-    --h6: #ca97e8;
-  }
+.prose {
+  @apply max-w-full text-core-content prose-p:mt-4 prose-p:break-words prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
 }
 
 .prose {
-  @apply max-w-full text-core-content prose-headings:mt-8 prose-headings:border-l-4 prose-headings:pl-3  prose-headings:font-roboto prose-headings:font-medium prose-headings:text-core-content  prose-p:mt-4 prose-p:break-words prose-a:text-link prose-a:no-underline prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
+  @apply prose-headings:mb-[1em] prose-headings:mt-[2em] prose-headings:text-core-content;
 }
 
-.prose h2 {
-  border-color: var(--h2);
-}
-.prose h3 {
-  border-color: var(--h3);
-}
-.prose h4 {
-  border-color: var(--h4);
-}
-.prose h5 {
-  border-color: var(--h5);
-}
-.prose h6 {
-  border-color: var(--h6);
+.prose li::marker {
+  color: rgb(var(--color-primary) / 0.6);
 }
 
-.prose a:hover {
-  text-decoration: underline wavy;
-  text-underline-offset: 2px;
+.prose a {
+  color: rgb(var(--color-link));
+  text-decoration: underline dashed;
+  text-underline-offset: 4px;
+  text-decoration-color: rgb(var(--color-link) / 0.4);
+  font-weight: 500;
+  position: relative;
+
+  &:active {
+    scale: 95%;
+  }
+
+  &:hover,
+  &:active {
+    background-color: rgb(var(--color-link-background));
+    &:before {
+      @apply -inset-1 rounded-md;
+      content: var(--tw-content);
+      border: 4px solid rgb(var(--color-link-background));
+      position: absolute;
+    }
+  }
 }
 
 .prose hr {
-  @apply m-0 border-primary;
+  @apply m-0 border-border;
 }
 
-.prose pre {
-  @apply rounded border border-border;
-}
+.prose {
+  code {
+    @apply rounded-md border border-border bg-secondary/70 px-2 py-0.5 font-jetBrainsMono font-normal text-core-content;
 
-.prose pre code {
-  @apply border-none bg-transparent p-0;
-}
+    &:after,
+    &:before {
+      content: none;
+    }
+  }
 
-.prose code {
-  @apply rounded border border-border bg-secondary/40 px-2 py-0.5 text-core-content;
+  pre {
+    @apply rounded-xl  p-3;
+
+    code {
+      @apply border-none bg-transparent p-0 text-inherit;
+    }
+  }
 }

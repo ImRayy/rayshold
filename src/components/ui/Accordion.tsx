@@ -1,35 +1,33 @@
 import React from "react";
-import { ChevronDown } from "lucide-react";
 
 interface AccordionProps {
   title: string;
   children: React.ReactNode;
-  icon?: React.ReactNode;
 }
 
-const Accordion = ({ title, children, icon }: AccordionProps) => {
+const Accordion = ({ title, children }: AccordionProps) => {
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
+
   return (
-    <div className="flex flex-col justify-center rounded-md border border-secondary">
+    <div className="flex flex-col justify-center ">
       <button
         id="accordion"
-        className="inline-flex items-center gap-1 bg-secondary/40 p-2"
+        className="inline-flex items-center"
         onClick={() => setOpen((prev) => !prev)}
       >
-        {icon}
-        <span className="inline-flex w-full justify-between px-1 ">
+        <span className="-ml-1.5 inline-flex w-full items-center gap-1">
+          <span
+            className={`iconify text-xl transition-all duration-300 tabler--caret-right ${open ? "rotate-90" : ""}`}
+          ></span>
           {title}
-          <ChevronDown
-            className={`transition-all duration-300 ${open ? "-rotate-180" : ""}`}
-          />
         </span>
       </button>
       <div
-        className={`overflow-y-hidden transition-all ease-in-out`}
+        className={`transition-all ease-in-out ${!open && "overflow-y-hidden"}`}
         style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}
       >
-        <div className="p-4 pl-8" ref={ref}>
+        <div className="mt-2  rounded-lg bg-hover/40 p-4  pl-8" ref={ref}>
           {children}
         </div>
       </div>

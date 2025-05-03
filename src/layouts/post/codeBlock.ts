@@ -1,46 +1,53 @@
-import { Clipboard, CircleCheckBig } from "lucide";
-import { createIconElement } from "@utils/lucide-icon";
-
-export function addCopyCodeButton() {
+export const addCopyCodeButton = () => {
   const codeblocks = Array.from(document.querySelectorAll("pre"));
 
-  codeblocks.forEach((codeblock) => {
-    const clipboardIcon = createIconElement(Clipboard);
-    const doneIcon = createIconElement(CircleCheckBig, "text-success");
+  for (const codeblock of codeblocks) {
+    const copyIcon = Object.assign(document.createElement("span"), {
+      className: "iconify tabler--copy",
+    });
 
-    // const copyBtn = template?.cloneNode(true) as HTMLButtonElement;
+    const doneIcon = Object.assign(document.createElement("span"), {
+      className: "iconify tabler--check",
+    });
+
     const wrapper = document.createElement("div");
-    const copyBtn = document.createElement("button");
-    copyBtn.className =
-      "top-2 right-2 absolute border p-1.5 shadow-sm shadow-crust border-secondary bg-secondary rounded-md";
-    copyBtn.append(clipboardIcon);
+    const copyBtn = Object.assign(document.createElement("button"), {
+      className:
+        "absolute right-2 top-2 flex size-8 items-center justify-center rounded-lg  bg-zinc-700 text-zinc-200 text-lg",
+    });
 
-    copyCode(codeblock, copyBtn, clipboardIcon, doneIcon);
+    copyBtn.append(copyIcon);
+
+    copyCode(codeblock, copyBtn, copyIcon, doneIcon);
     wrapper.style.position = "relative";
     codeblock.parentNode?.insertBefore(wrapper, codeblock);
     wrapper.appendChild(codeblock);
     wrapper.appendChild(copyBtn);
-  });
+  }
 
   async function copyCode(
     block: HTMLElement,
     btn: HTMLButtonElement,
-    clipboardIcon: SVGElement,
-    doneIcon: SVGElement
+    clipboardIcon: HTMLSpanElement,
+    doneIcon: HTMLSpanElement
   ) {
     const text = block.innerText;
     btn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(text ?? "");
         btn.firstChild?.replaceWith(doneIcon);
+        const prev = btn.className;
+        btn.classList.replace("bg-zinc-700", "bg-info");
+        btn.className = `${btn.className} text-core`;
 
         setTimeout(() => {
           btn.firstChild?.replaceWith(clipboardIcon);
-        }, 5000);
+          btn.className = prev;
+        }, 2000);
       } catch (err) {
         alert(err);
         console.error(err);
       }
     });
   }
-}
+};

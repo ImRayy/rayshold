@@ -10,14 +10,12 @@ interface Heading {
 const { headings } = Astro.props;
 ---
 
-<Accordion title="Table of Contents" client:load>
-  <ul class="list-disc space-y-1">
+<Accordion title="Open Table of Contents" client:load>
+  <ul class="prose list-disc space-y-1">
     {
       headings.map((h: Heading) => (
         <li>
-          <a class="text-link hover:text-cyan-600" href={`#${h.slug}`}>
-            {h.text}
-          </a>
+          <a href={`#${h.slug}`}>{h.text}</a>
         </li>
       ))
     }

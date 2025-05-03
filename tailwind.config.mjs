@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+import { addIconSelectors } from "@iconify/tailwind";
 
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: "class",
   content: ["./src/**/*.{js,ts,astro,mdx,md,tsx}"],
@@ -58,5 +59,5 @@ export default {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), addIconSelectors(["tabler"])],
 };

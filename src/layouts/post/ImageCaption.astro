@@ -1,0 +1,20 @@
+---
+interface Props {
+  caption: string;
+}
+
+const { caption } = Astro.props;
+---
+
+<Fragment>
+  {
+    caption && (
+      <div class="relative flex items-center pl-4 before:absolute before:left-0 before:h-8 before:w-1 before:rounded-full before:bg-secondary before:content-['']">
+        Cover image source:
+        <a href={caption} target="_blank" class="font-bold text-link">
+          Source
+        </a>
+      </div>
+    )
+  }
+</Fragment>

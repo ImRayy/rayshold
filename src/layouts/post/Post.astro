@@ -4,6 +4,8 @@ import MetaInfo from "@components/blog/MetaInfo.astro";
 import { getWordsCount } from "../../utils/helpers";
 import TableOfContent from "@components/blog/TableOfContent.astro";
 import "../../styles/markdown.css";
+import "../../styles/markdown-extend.css";
+import ImageCaption from "./ImageCaption.astro";
 import { Image } from "astro:assets";
 
 const { entry } = Astro.props;
@@ -18,62 +20,43 @@ const { Content, headings } = await entry.render();
   <div class="text-core-content">
     <div class="pb-4">
       <!-- TITLE -->
-      <h1 class="select-none pb-4 text-4xl capitalize text-core-content">
+      <h1 class="pb-4 text-4xl font-bold capitalize text-core-content">
         {entry.data.title}
       </h1>
       <div
-        class="flex select-none items-center gap-3 pb-4 font-medium text-secondary-content"
+        class="flex items-center gap-3 pb-4 font-medium text-secondary-content"
       >
-        <MetaInfo
-          date={entry.data.publishDate}
-          words={words}
-          showWordCount={false}
-          className="w-5"
-        />
+        <MetaInfo date={entry.data.publishDate} words={words} />
       </div>
     </div>
 
     <!-- BANNER IMAGE -->
-    <div
-      class="group relative mb-6 overflow-hidden rounded-xl shadow-xl transition-all"
-    >
-      <Image
-        src={entry.data.image?.src}
-        alt={entry.data.image?.alt}
-        width={1600}
-        height={900}
-      />
-      {
-        entry.data.image?.caption && (
-          <div class="absolute bottom-0 hidden h-10 w-full  items-center gap-1 bg-black/40 p-2 backdrop-blur-sm group-hover:inline-flex">
-            <a
-              href={entry.data.image?.caption}
-              class="truncate text-white hover:underline"
-              target="_blank"
-            >
-              {entry.data.image?.caption}
-            </a>
-          </div>
-        )
-      }
+    <Image
+      src={entry.data.image?.src}
+      alt={entry.data.image?.alt}
+      width={1600}
+      height={900}
+      class="rounded-xl"
+    />
+    <div class="my-8">
+      <ImageCaption caption={entry.data.image.caption} />
     </div>
     <!-- TABLE OF CONTENT -->
+    <h2 class="pb-4 text-2xl font-extrabold">Table of contents</h2>
     <TableOfContent headings={headings} />
     <!-- CONTENT -->
-    <div class="prose">
+    <div class="prose pt-8">
       <Content />
     </div>
   </div>
 </Layout>
 
 <script>
-  import { addCallouts } from "./callout";
   import { addCopyCodeButton } from "./codeBlock";
   import { setImageSizeLikeObsidian } from "./image";
 
   const init = () => {
     setImageSizeLikeObsidian();
-    addCallouts();
     addCopyCodeButton();
   };
 
