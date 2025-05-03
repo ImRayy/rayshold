@@ -53,9 +53,8 @@ export default {
         md: "17px",
       },
       fontFamily: {
-        josefinSans: "Josefin Sans, 'sans-serif'",
-        inter: "Inter, 'sans-serif'",
         roboto: "'Roboto', sans-serif",
+        jetBrainsMono: "'JetBrains Mono', monospace",
       },
     },
   },
