@@ -1,31 +1,31 @@
 ---
 import MetaInfo from "@components/blog/MetaInfo.astro";
-import { getWordsCount } from "../../utils/helpers";
 import TableOfContent from "@components/blog/TableOfContent.astro";
 import Layout from "@layouts/Layout.astro";
-import "../../styles/markdown.css";
 import "../../styles/markdown-extend.css";
+import "../../styles/markdown.css";
 import ImageCaption from "./ImageCaption.astro";
 import { Image } from "astro:assets";
+import readingTime from "reading-time";
 
 const { entry } = Astro.props;
-const words = getWordsCount(entry.body);
 const { Content, headings } = await entry.render();
+const { words, minutes } = readingTime(entry.body);
 ---
 
 <Layout
   title={`Post | ${entry.data.title}`}
   description={entry.data.description}
 >
-  <div id="animation-container" class:list="text-core-content w-full">
+  <div id="animation-container" class="w-full">
     <!-- TITLE -->
-    <h1 class="pb-4 text-4xl font-bold capitalize text-core-content">
+    <h1 class="pb-4 text-4xl font-bold capitalize text-primary">
       {entry.data.title}
     </h1>
     <div
       class="onload-animation flex items-center gap-3 pb-4 font-medium text-secondary-content"
     >
-      <MetaInfo date={entry.data.publishDate} words={words} />
+      <MetaInfo date={entry.data.publishDate} words={words} minutes={minutes} />
     </div>
 
     <!-- BANNER IMAGE -->
@@ -41,11 +41,13 @@ const { Content, headings } = await entry.render();
     </div>
     <!-- TABLE OF CONTENT -->
     <div class="onload-animation">
-      <h2 class="pb-4 text-2xl font-extrabold">Table of contents</h2>
+      <h2 class="pb-4 text-2xl font-extrabold text-primary">
+        Table of contents
+      </h2>
       <TableOfContent headings={headings} />
     </div>
     <!-- CONTENT -->
-    <div class="onload-animation prose pt-8">
+    <div class="onload-animation prose select-text pt-8">
       <Content />
     </div>
   </div>

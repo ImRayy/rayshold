@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import PostFormat from "@components/blog/PostFormat.astro";
 import { getSortedPosts } from "@utils/content-utils";
+import readingTime from "reading-time";
 
 const allBlogPosts = await getSortedPosts();
 ---
@@ -9,7 +10,7 @@ const allBlogPosts = await getSortedPosts();
 <Layout title="Home">
   <div id="animation-container">
     <div class="onload-animation space-y-4 md:flex-row md:gap-14">
-      <p class="text-3xl font-bold">Sup! I'm Ray</p>
+      <h2 class="text-3xl font-bold text-title">Sup! I'm Ray</h2>
       <p>
         ... I love building things. When I'm bored, I tinker with my Linux
         distro and make unnecessary improvements. As a Linux nerd, it's
@@ -18,7 +19,7 @@ const allBlogPosts = await getSortedPosts();
       </p>
     </div>
     <div
-      class="onload-animation mb-6 mt-10 inline-flex w-full items-end justify-between font-bold"
+      class="onload-animation mb-6 mt-10 inline-flex w-full items-end justify-between font-bold text-title"
     >
       <span>Recent Posts</span>
       <a href="/blogs" class="text-sm font-normal underline underline-offset-4"
@@ -27,11 +28,12 @@ const allBlogPosts = await getSortedPosts();
     </div>
     <hr class="onload-animation mb-4 border-border" />
     {
-      allBlogPosts.map((blogPostEntry) => (
+      allBlogPosts.map((entry) => (
         <div class="onload-animation">
           <PostFormat
-            FrontMatter={blogPostEntry.data}
-            slug={blogPostEntry.slug}
+            FrontMatter={entry.data}
+            slug={entry.slug}
+            minutes={readingTime(entry.body).minutes}
           />
           <hr class="onload-animation my-4 border-border" />
         </div>

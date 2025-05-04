@@ -4,9 +4,10 @@ import dayjs from "dayjs";
 export interface Props {
   date: Date;
   words: number;
+  minutes: number;
 }
 
-const { date, words } = Astro.props;
+const { date, words, minutes } = Astro.props;
 
 const defaultClasses =
   "inline-flex text-sm  gap-1 text-primary/70 items-center";
@@ -27,7 +28,8 @@ const defaultClasses =
     <span id="icon" class="iconify tabler--clock-hour-4"></span>
   </span>
   <span>
-    {Math.ceil(words / 200)}{" "}Min.
+    {Math.round(minutes)}
+    {`${minutes > 1 ? " Mins" : " Min"}`}
   </span>
 </span>
 
@@ -37,7 +39,7 @@ const defaultClasses =
   <span id="header-icons">
     <span id="icon" class="iconify tabler--pencil"></span>
   </span>
-  {words} Words.
+  {words} Words
 </span>
 
 <style>

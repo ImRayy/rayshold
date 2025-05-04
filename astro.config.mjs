@@ -9,7 +9,6 @@ import { parseDirectiveNode } from "./src/plugins/remark/directive-rehype";
 import { externalLink } from "./src/plugins/rehype/externalLink";
 import swup from "@swup/astro";
 import { CalloutComponent } from "./src/plugins/rehype/callout";
-
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config

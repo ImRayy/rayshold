@@ -1,6 +1,5 @@
 ---
-import { formatDateTime } from "@utils/formatter";
-import Icon from "astro-icon";
+import dayjs from "dayjs";
 
 export interface Props {
   FrontMatter: {
@@ -9,27 +8,29 @@ export interface Props {
     publishDate: Date;
   };
   slug: string;
+  minutes: number;
 }
-const { FrontMatter, slug } = Astro.props;
+const { FrontMatter, slug, minutes } = Astro.props;
 ---
 
 <a
   href={`/blogs/post/${slug}`}
   class="noSelect flex flex-col gap-2 rounded-lg transition-transform duration-150 active:scale-95"
 >
-  <span class="border-dotted text-xl font-medium">
+  <h3 class="border-dotted text-xl font-medium text-title">
     {FrontMatter.title}
-  </span>
+  </h3>
   <p class="line-clamp-2 text-sm">{FrontMatter.description}</p>
   <div class="flex gap-3 pt-6 text-xs">
     <span class="flex items-center gap-1 capitalize">
-      <Icon name="lucide:calendar" class="w-4" />
-      {formatDateTime(FrontMatter.publishDate)}
+      <span class="iconify text-lg tabler--calendar-event"></span>
+      {dayjs(FrontMatter.publishDate).format("DD MMM, YYYY")}
     </span>
     <span>|</span>
     <span class="flex items-center gap-1 capitalize">
-      <Icon name="lucide:clock" class="w-4" />
-      4&nbsp;minutes
+      <span class="iconify text-lg tabler--clock-hour-4"></span>
+      {Math.round(minutes)}
+      {`${minutes > 1 ? " Mins" : " Min"}`}
     </span>
   </div>
 </a>

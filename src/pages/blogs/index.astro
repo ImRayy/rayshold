@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { getWordsCount } from "@utils/helpers";
 import { getSortedPosts } from "@utils/content-utils";
 import CardFormat from "./CardFormat.astro";
 import type { PostType } from "src/content/config";
@@ -17,8 +16,6 @@ const allBlogPosts = await getSortedPosts();
           title={post.data.title}
           description={post.data.description}
           image={post.data.image}
-          publishdDate={post.data.publishDate}
-          wordsCount={getWordsCount(post.body)}
         />
       ))
     }

@@ -1,7 +1,7 @@
 @tailwind base;
 
 .prose {
-  @apply max-w-full prose-headings:!text-core-content prose-p:mt-4 prose-p:break-before-auto prose-p:text-core-content prose-figcaption:!text-core-content prose-strong:!text-core-content  prose-code:font-medium prose-code:leading-6 prose-ol:!text-core-content prose-ul:!text-core-content prose-table:text-core-content prose-img:rounded-sm;
+  @apply max-w-full prose-headings:!text-title prose-p:mt-4 prose-p:break-before-auto prose-p:text-core-content prose-figcaption:!text-core-content prose-strong:!text-title  prose-code:font-medium prose-code:leading-6 prose-ol:!text-core-content prose-ul:!text-core-content prose-table:text-core-content prose-img:rounded-sm;
 }
 
 .prose {

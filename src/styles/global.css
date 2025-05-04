@@ -46,6 +46,11 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+::selection {
+  background-color: rgb(var(--color-link) / 0.2);
+}
+
 .noSelect:focus {
   outline: none !important;
 }

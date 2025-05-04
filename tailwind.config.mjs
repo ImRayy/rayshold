@@ -40,6 +40,7 @@ export default {
           DEFAULT: "rgb(var(--color-secondary) / <alpha-value>)",
           content: "rgb(var(--color-secondary-content) / <alpha-value>)",
         },
+        title: "rgb(var(--color-title) / <alpha-value>)",
         muted: "rgb(var(--color-muted) / <alpha-value>)",
         hover: "rgb(var(--color-hover) / <alpha-value>)",
         link: "rgb(var(--color-link) / <alpha-value>)",
