@@ -16,7 +16,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://rayshold.vercel.app/",
   image: {
-    domains: ["ik.imagekit.io"],
+    domains: ["ik.imagekit.io", "pexels.com"],
   },
   prefetch: true,
   prefetch: {

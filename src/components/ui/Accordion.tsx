@@ -18,7 +18,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
       >
         <span className="-ml-1.5 inline-flex w-full items-center gap-1">
           <span
-            className={`iconify text-xl transition-all duration-300 tabler--caret-right ${open ? "rotate-90" : ""}`}
+            className={`iconify  text-xl transition-transform duration-300 tabler--caret-right ${open ? "rotate-90" : ""}`}
           ></span>
           {title}
         </span>

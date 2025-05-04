@@ -37,7 +37,18 @@
 }
 
 .prose hr {
-  @apply m-0 border-border;
+  @apply border-dashed border-primary/30;
+}
+
+.prose table {
+  td {
+    border-bottom: 1px solid rgb(var(--color-primary) / 0.1);
+  }
+
+  th {
+    border-bottom: 1px solid rgb(var(--color-primary) / 0.2);
+    text-align: start;
+  }
 }
 
 .prose {
