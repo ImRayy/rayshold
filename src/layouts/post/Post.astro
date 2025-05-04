@@ -18,16 +18,15 @@ const { Content, headings } = await entry.render();
   description={entry.data.description}
 >
   <div class="text-core-content">
-    <div class="pb-4">
-      <!-- TITLE -->
-      <h1 class="pb-4 text-4xl font-bold capitalize text-core-content">
-        {entry.data.title}
-      </h1>
-      <div
-        class="flex items-center gap-3 pb-4 font-medium text-secondary-content"
-      >
-        <MetaInfo date={entry.data.publishDate} words={words} />
-      </div>
+    <!-- TITLE -->
+    <h1 class="pb-4 text-4xl font-bold capitalize text-core-content">
+      {entry.data.title}
+    </h1>
+
+    <div
+      class="flex items-center gap-3 pb-4 font-medium text-secondary-content"
+    >
+      <MetaInfo date={entry.data.publishDate} words={words} />
     </div>
 
     <!-- BANNER IMAGE -->
@@ -61,14 +60,4 @@ const { Content, headings } = await entry.render();
   };
 
   init();
-
-  const setup = () => {
-    window.swup?.hooks.on("page:view", init);
-  };
-
-  if (window.swup) {
-    setup();
-  } else {
-    document.addEventListener("swup:enable", setup);
-  }
 </script>

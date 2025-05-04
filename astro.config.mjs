@@ -7,6 +7,7 @@ import remarkDirective from "remark-directive";
 import react from "@astrojs/react";
 import { parseDirectiveNode } from "./src/plugins/remark/directive-rehype";
 import { externalLink } from "./src/plugins/rehype/externalLink";
+import swup from "@swup/astro";
 import { CalloutComponent } from "./src/plugins/rehype/callout";
 
 import sitemap from "@astrojs/sitemap";
@@ -48,13 +49,19 @@ export default defineConfig({
      * I'm currently using the manual method to initialize Swup to avoid the
      * window.swup type error while globalInstance is set to true
      * **/
-    // swup({
-    //   theme: false,
-    //   cache: true,
-    //   smoothScrolling: false,
-    //   accessibility: true,
-    //   globalInstance: true,
-    // }),
+    swup({
+      theme: false,
+      native: false,
+      animationClass: "transition-swup-",
+      containers: ["main"],
+      cache: true,
+      preload: true,
+      accessibility: true,
+      smoothScrolling: true,
+      updateBodyClass: false,
+      updateHead: true,
+      globalInstance: false,
+    }),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -65,4 +72,3 @@ export default defineConfig({
     sitemap(),
   ],
 });
-

@@ -48,3 +48,10 @@ body {
 .noSelect:focus {
   outline: none !important;
 }
+
+html.is-changing .transition-swup-fade {
+  @apply transition-all duration-200;
+}
+html.is-animating .transition-swup-fade {
+  @apply translate-y-4 opacity-0;
+}
