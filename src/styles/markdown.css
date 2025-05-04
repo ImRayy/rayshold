@@ -1,11 +1,15 @@
 @tailwind base;
 
 .prose {
-  @apply min-w-full text-core-content prose-p:mt-4 prose-p:break-words prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
+  @apply max-w-full prose-headings:!text-core-content prose-p:mt-4 prose-p:break-before-auto prose-p:text-core-content prose-figcaption:!text-core-content prose-strong:!text-core-content  prose-code:font-medium prose-code:leading-6 prose-ol:!text-core-content prose-ul:!text-core-content prose-table:text-core-content prose-img:rounded-sm;
 }
 
 .prose {
-  @apply prose-headings:mb-[1em] prose-headings:mt-[2em] prose-headings:text-core-content;
+  @apply prose-headings:mb-[1em] prose-headings:mt-[2em];
+}
+
+.prose details {
+  @apply inline-block cursor-pointer select-none text-core-content;
 }
 
 .prose li::marker {
@@ -66,6 +70,9 @@
 
     code {
       @apply border-none bg-transparent p-0 text-inherit;
+      ::selection {
+        background-color: rgba(255, 255, 255, 0.16);
+      }
     }
   }
 }
