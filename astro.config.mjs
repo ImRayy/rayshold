@@ -9,9 +9,11 @@ import { parseDirectiveNode } from "./src/plugins/remark/directive-rehype";
 import { externalLink } from "./src/plugins/rehype/externalLink";
 import { CalloutComponent } from "./src/plugins/rehype/callout";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.rayshold.vercel.app/",
+  site: "https://rayshold.vercel.app/",
   image: {
     domains: ["ik.imagekit.io"],
   },
@@ -60,5 +62,7 @@ export default defineConfig({
       optimize: true,
     }),
     react(),
+    sitemap(),
   ],
 });
+
