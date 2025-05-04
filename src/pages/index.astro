@@ -7,33 +7,35 @@ const allBlogPosts = await getSortedPosts();
 ---
 
 <Layout title="Home">
-  <div class="space-y-4 md:flex-row md:gap-14">
-    <p class="text-3xl font-bold">Sup! I'm Ray</p>
-    <p>
-      ... I love building things. When I'm bored, I tinker with my Linux distro
-      and make unnecessary improvements. As a Linux nerd, it's practically
-      criminal not to be fond of anime. When I'm not doing any of those, I enjoy
-      playing games and reading thriller novels.
-    </p>
-  </div>
-  <div
-    class="mb-6 mt-10 inline-flex w-full items-end justify-between font-bold"
-  >
-    <span>Recent Posts</span>
-    <a href="/blogs" class="text-sm font-normal underline underline-offset-4"
-      >View All</a
+  <div id="animation-container">
+    <div class="onload-animation space-y-4 md:flex-row md:gap-14">
+      <p class="text-3xl font-bold">Sup! I'm Ray</p>
+      <p>
+        ... I love building things. When I'm bored, I tinker with my Linux
+        distro and make unnecessary improvements. As a Linux nerd, it's
+        practically criminal not to be fond of anime. When I'm not doing any of
+        those, I enjoy playing games and reading thriller novels.
+      </p>
+    </div>
+    <div
+      class="onload-animation mb-6 mt-10 inline-flex w-full items-end justify-between font-bold"
     >
+      <span>Recent Posts</span>
+      <a href="/blogs" class="text-sm font-normal underline underline-offset-4"
+        >View All</a
+      >
+    </div>
+    <hr class="onload-animation mb-4 border-border" />
+    {
+      allBlogPosts.map((blogPostEntry) => (
+        <div class="onload-animation">
+          <PostFormat
+            FrontMatter={blogPostEntry.data}
+            slug={blogPostEntry.slug}
+          />
+          <hr class="onload-animation my-4 border-border" />
+        </div>
+      ))
+    }
   </div>
-  <hr class="mb-4 border-border" />
-  {
-    allBlogPosts.map((blogPostEntry) => (
-      <Fragment>
-        <PostFormat
-          FrontMatter={blogPostEntry.data}
-          slug={blogPostEntry.slug}
-        />
-        <hr class="my-4 border-border" />
-      </Fragment>
-    ))
-  }
 </Layout>

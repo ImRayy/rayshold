@@ -9,7 +9,7 @@ const allBlogPosts = await getSortedPosts();
 ---
 
 <Layout title="Blogs">
-  <div class="space-y-6">
+  <div id="animation-container" class="space-y-6">
     {
       allBlogPosts.map((post: PostType) => (
         <CardFormat

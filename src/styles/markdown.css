@@ -1,7 +1,7 @@
 @tailwind base;
 
 .prose {
-  @apply max-w-full text-core-content prose-p:mt-4 prose-p:break-words prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
+  @apply min-w-full text-core-content prose-p:mt-4 prose-p:break-words prose-strong:text-core-content prose-code:font-medium prose-code:leading-6 prose-img:rounded-sm;
 }
 
 .prose {

@@ -5,6 +5,7 @@ import ThemeProviderar from "@components/ui/ThemeProviderar.astro";
 import "../styles/global.css";
 
 export interface Props {
+  id?: string;
   title?: string;
   description?: string;
   url?: string;
@@ -53,11 +54,10 @@ const {
   >
     <SideBar />
     <NavBar />
-    <main
-      id="swup-container"
-      class:list={["transition-swup-fade w-full max-w-2xl", className]}
-    >
-      <slot />
+    <main id="swup-container" class="transition-swup-fade w-full max-w-2xl">
+      <div id="content-wrapper" class:list={["w-full", className]}>
+        <slot />
+      </div>
     </main>
   </body>
 </html>
