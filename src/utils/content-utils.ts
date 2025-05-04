@@ -20,7 +20,7 @@ export async function getSortedPosts(): Promise<PostType[]> {
 }
 
 export async function getPostsByYear(): Promise<{ [key: string]: PostType[] }> {
-  const posts = await getPosts();
+  const posts = await getSortedPosts();
 
   return posts.reduce<{ [key: string]: PostType[] }>((acc, post) => {
     const year = dayjs(post.data.publishDate).year().toString();

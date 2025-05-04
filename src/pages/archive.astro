@@ -9,43 +9,45 @@ const posts = await getPostsByYear();
 <Layout title="Archive">
   <div id="animation-container">
     {
-      Object.entries(posts).map(([year, posts]) => (
-        <div class="onload-animation pb-4">
-          <div class="flex items-center pb-4">
-            <div class="w-14 text-2xl font-semibold">{year}</div>
-            <div class="flex w-[15%] items-start justify-center md:w-[12%]">
-              <span class="block size-[14px] rounded-full border-[3px] border-primary" />
+      Object.entries(posts)
+        .reverse()
+        .map(([year, posts]) => (
+          <div class="onload-animation pb-4">
+            <div class="flex items-center pb-4">
+              <div class="w-14 text-2xl font-semibold">{year}</div>
+              <div class="flex w-[15%] items-start justify-center md:w-[12%]">
+                <span class="block size-[14px] rounded-full border-[3px] border-primary" />
+              </div>
+              <span class="text-muted">{posts.length} Posts</span>
             </div>
-            <span class="text-muted">{posts.length} Posts</span>
-          </div>
-          <div>
-            {posts.map((post) => (
-              <a
-                href={`/blogs/post/${post.slug}`}
-                class="group flex items-center rounded-lg hover:bg-hover"
-              >
-                <div class="w-14 shrink-0 text-end text-sm text-muted">
-                  {dayjs(post.data.publishDate).format("DD MMM")}
-                </div>
-                <div
-                  id="indicator"
-                  class="flex h-10 w-[15%] shrink-0 items-center  md:w-[12%]"
+            <div>
+              {posts.map((post) => (
+                <a
+                  href={`/blogs/post/${post.slug}`}
+                  class="group flex items-center rounded-lg hover:bg-hover"
                 >
-                  <span class="mx-auto block h-1 w-1 rounded-full bg-primary transition-all duration-300 group-hover:h-5" />
-                </div>
-                <div class="inline-flex w-full items-center justify-between">
-                  <span class="font-medium text-core-content/90 transition-transform duration-300 group-hover:translate-x-2 group-hover:text-core-content">
-                    {post.data.title}
-                  </span>
-                  <span class="hidden w-1/4 truncate whitespace-nowrap text-sm capitalize text-muted sm:block">
-                    #{post.data.tags.join(" #")}
-                  </span>
-                </div>
-              </a>
-            ))}
+                  <div class="w-14 shrink-0 text-end text-sm text-muted">
+                    {dayjs(post.data.publishDate).format("DD MMM")}
+                  </div>
+                  <div
+                    id="indicator"
+                    class="flex h-10 w-[15%] shrink-0 items-center  md:w-[12%]"
+                  >
+                    <span class="mx-auto block h-1 w-1 rounded-full bg-primary transition-all duration-300 group-hover:h-5" />
+                  </div>
+                  <div class="inline-flex w-full items-center justify-between">
+                    <span class="font-medium text-core-content/90 transition-transform duration-300 group-hover:translate-x-2 group-hover:text-core-content">
+                      {post.data.title}
+                    </span>
+                    <span class="hidden w-1/4 truncate whitespace-nowrap text-sm capitalize text-muted sm:block">
+                      #{post.data.tags.join(" #")}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      ))
+        ))
     }
   </div>
 </Layout>
