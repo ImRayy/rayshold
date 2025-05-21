@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import CardFormat from "./CardFormat.astro";
-import type { PostType } from "src/content/config";
+import type { PostType } from "src/content.config";
 
 const allBlogPosts = await getSortedPosts();
 ---

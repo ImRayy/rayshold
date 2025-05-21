@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
-import type { PostType } from "src/content/config";
 import dayjs from "dayjs";
+import type { PostType } from "src/content.config";
 
 async function getPosts(): Promise<PostType[]> {
   return await getCollection("blog", (p: PostType) => {

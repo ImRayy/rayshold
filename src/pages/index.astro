@@ -10,7 +10,7 @@ const allBlogPosts = await getSortedPosts();
 <Layout title="Home">
   <div id="animation-container">
     <div class="onload-animation space-y-4 md:flex-row md:gap-14">
-      <h2 class="text-3xl font-bold text-title">Sup! I'm Ray</h2>
+      <h2 class="text-3xl font-bold text-title">Sup! I&apos;m Ray</h2>
       <p>
         ... I love building things. When I'm bored, I tinker with my Linux
         distro and make unnecessary improvements. As a Linux nerd, it's
@@ -18,26 +18,34 @@ const allBlogPosts = await getSortedPosts();
         those, I enjoy playing games and reading thriller novels.
       </p>
     </div>
-    <div
-      class="onload-animation mb-6 mt-10 inline-flex w-full items-end justify-between font-bold text-title"
-    >
-      <span>Recent Posts</span>
-      <a href="/blogs" class="text-sm font-normal underline underline-offset-4"
-        >View All</a
-      >
-    </div>
-    <hr class="onload-animation mb-4 border-border" />
+    <hr class="onload-animation my-4 border-border" />
     {
-      allBlogPosts.map((entry) => (
+      allBlogPosts.slice(0, 3).map((entry, idx) => (
         <div class="onload-animation">
           <PostFormat
             FrontMatter={entry.data}
             slug={entry.slug}
             minutes={readingTime(entry.body).minutes}
           />
-          <hr class="onload-animation my-4 border-border" />
+          <hr
+            class:list={[
+              "onload-animation my-4 border-border",
+              // { hidden: idx === 2 },
+            ]}
+          />
         </div>
       ))
     }
+  </div>
+  <div class="onload-animation inline-flex w-full justify-end">
+    <a
+      href="/blogs"
+      class="group inline-flex items-center gap-1 rounded border px-2 py-2 active:scale-95 sm:text-sm"
+    >
+      <span>Read More Posts</span>
+      <span
+        class="iconify text-xl transition-transform duration-500 tabler--chevron-right sm:text-sm"
+      ></span>
+    </a>
   </div>
 </Layout>

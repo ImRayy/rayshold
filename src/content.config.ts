@@ -20,13 +20,13 @@ const blogCollection = defineCollection({
   schema: post,
 });
 
-export const collections = {
-  blog: blogCollection,
-};
-
 export type PostType = {
   id: string;
   slug: string;
   body: string;
   data: z.infer<typeof post>;
+};
+
+export const collections = {
+  blog: blogCollection,
 };
