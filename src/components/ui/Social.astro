@@ -1,10 +1,8 @@
 ---
-import Icon from "astro-icon";
-
 const socialLinks = [
-  { icon: "tabler:brand-github", url: "github.com/ImRayy", width: 24 },
-  { icon: "tabler:brand-telegram", url: "telegram.me/im_rayy", width: 24 },
-  { icon: "tabler:brand-reddit", url: "reddit.com/user/_ImRay_", width: 24 },
+  { icon: "iconify tabler--brand-github", url: "github.com/ImRayy" },
+  { icon: "iconify tabler--brand-telegram", url: "telegram.me/im_rayy" },
+  { icon: "iconify tabler--brand-reddit", url: "reddit.com/user/_ImRay_" },
 ];
 ---
 
@@ -14,9 +12,9 @@ const socialLinks = [
       <a
         href={`https://${l.url}`}
         target="_blank"
-        class="rounded-full p-2 transition-colors hover:bg-primary  hover:text-primary-content"
+        class="flex size-10 items-center justify-center rounded-full text-2xl transition-colors hover:bg-primary hover:text-primary-content  active:bg-primary  sm:size-8 sm:text-xl"
       >
-        <Icon name={l.icon} width={l.width} />
+        <span class:list={[l.icon]} />
       </a>
     ))
   }
