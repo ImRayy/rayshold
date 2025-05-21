@@ -4,7 +4,7 @@ import PostFormat from "@components/blog/PostFormat.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import readingTime from "reading-time";
 
-const allBlogPosts = await getSortedPosts();
+const allBlogPosts = (await getSortedPosts()).slice(0, 3);
 ---
 
 <Layout title="Home">
@@ -20,19 +20,14 @@ const allBlogPosts = await getSortedPosts();
     </div>
     <hr class="onload-animation my-4 border-border" />
     {
-      allBlogPosts.slice(0, 3).map((entry, idx) => (
+      allBlogPosts.map((entry) => (
         <div class="onload-animation">
           <PostFormat
             FrontMatter={entry.data}
-            slug={entry.slug}
-            minutes={readingTime(entry.body).minutes}
+            postId={entry.id}
+            minutes={readingTime(entry?.body ?? "").minutes}
           />
-          <hr
-            class:list={[
-              "onload-animation my-4 border-border",
-              // { hidden: idx === 2 },
-            ]}
-          />
+          <hr class:list={["onload-animation my-4 border-border"]} />
         </div>
       ))
     }

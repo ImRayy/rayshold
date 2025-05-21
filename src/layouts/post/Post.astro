@@ -7,10 +7,11 @@ import "../../styles/markdown.css";
 import ImageCaption from "./ImageCaption.astro";
 import { Image } from "astro:assets";
 import readingTime from "reading-time";
+import { render } from "astro:content";
 
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
-const { words, minutes } = readingTime(entry.body);
+const { Content, headings } = await render(entry);
+const { words, minutes } = readingTime(entry?.body ?? "");
 ---
 
 <Layout

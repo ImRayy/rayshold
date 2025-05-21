@@ -7,14 +7,14 @@ export interface Props {
     description: string;
     publishDate: Date;
   };
-  slug: string;
+  postId: string;
   minutes: number;
 }
-const { FrontMatter, slug, minutes } = Astro.props;
+const { FrontMatter, postId, minutes } = Astro.props;
 ---
 
 <a
-  href={`/blogs/post/${slug}`}
+  href={`/blogs/post/${postId}`}
   class="noSelect flex flex-col gap-2 rounded-lg transition-transform duration-150 active:scale-95"
 >
   <h3 class="border-dotted text-xl font-medium text-title">

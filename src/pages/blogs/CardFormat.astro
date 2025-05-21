@@ -7,13 +7,13 @@ type ImageType = {
 };
 
 interface Props {
-  slug: string;
+  postId: string;
   title: string;
   description: string;
   image: ImageType | undefined;
 }
 
-const { slug, title, description, image } = Astro.props;
+const { postId, title, description, image } = Astro.props;
 ---
 
 <div class="onload-animation flex w-full flex-col gap-4 sm:flex-row">
@@ -42,7 +42,7 @@ const { slug, title, description, image } = Astro.props;
     </p>
     {/* POST LINK */}
     <a
-      href={`/blogs/post/${slug}`}
+      href={`/blogs/post/${postId}`}
       class="group mt-4 inline-flex items-center gap-1"
     >
       <span class="text-title">Read Post</span>

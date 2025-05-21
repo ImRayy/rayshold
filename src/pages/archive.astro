@@ -22,7 +22,7 @@ const posts = await getPostsByYear();
           <div>
             {posts.map((post) => (
               <a
-                href={`/blogs/post/${post.slug}`}
+                href={`/blogs/post/${post.id}`}
                 class="group flex items-center rounded-lg hover:bg-hover"
               >
                 <div class="w-14 shrink-0 text-end text-sm text-muted">

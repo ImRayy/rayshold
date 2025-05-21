@@ -12,7 +12,7 @@ const allBlogPosts = await getSortedPosts();
     {
       allBlogPosts.map((post: PostType) => (
         <CardFormat
-          slug={post.slug}
+          postId={post.id}
           title={post.data.title}
           description={post.data.description}
           image={post.data.image}
