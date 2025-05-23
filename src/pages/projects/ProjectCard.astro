@@ -1,0 +1,47 @@
+---
+import { buttonVariants } from "@components/ui/Button.astro";
+import type { Project } from "./types";
+import { icons, type Icon, type IconKey } from "@/lib/icons";
+
+interface Props extends Project {}
+
+const { title, description, image, status, stack } = Astro.props;
+---
+
+<div class="space-y-3">
+  <section class="space-y-1">
+    <h2 class="text-3xl font-bold">
+      {title}
+    </h2>
+    <p class="text-sm">{description}</p>
+  </section>
+  <div class="overflow-hidden rounded-sm">
+    <img src={image} class="size-full object-cover" />
+  </div>
+  <ul class="flex flex-wrap gap-2">
+    {
+      stack?.map((name) => {
+        const icon: Icon = icons[name as IconKey] ?? undefined;
+        const btnStyle = [buttonVariants({ variant: "outline", size: "sm" })];
+        const source = icon?.source ?? "#";
+
+        return (
+          <a
+            href={source}
+            class:list={btnStyle}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {icon &&
+              (icon.provider === "svgl" || icon.provider === "local" ? (
+                <img src={icon.icon} alt={icon.name} width={icon.size} />
+              ) : (
+                <span class:list={[[icon.icon, "text-core-content"]]} />
+              ))}
+            <span>{icon?.name ?? name}</span>
+          </a>
+        );
+      })
+    }
+  </ul>
+</div>

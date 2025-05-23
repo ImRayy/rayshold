@@ -60,5 +60,8 @@ export default {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), addIconSelectors(["tabler"])],
+  plugins: [
+    require("@tailwindcss/typography"),
+    addIconSelectors(["tabler", "logos", "fluent-emoji-flat"]),
+  ],
 };

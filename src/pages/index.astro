@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import PostFormat from "@components/blog/PostFormat.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import readingTime from "reading-time";
+import { buttonVariants } from "@components/ui/Button.astro";
 
 const allBlogPosts = (await getSortedPosts()).slice(0, 3);
 ---
@@ -33,10 +34,7 @@ const allBlogPosts = (await getSortedPosts()).slice(0, 3);
     }
   </div>
   <div class="onload-animation inline-flex w-full justify-end">
-    <a
-      href="/blogs"
-      class="group inline-flex items-center gap-1 rounded border px-2 py-2 active:scale-95 sm:text-sm"
-    >
+    <a href="/blogs" class={buttonVariants({ variant: "outline" })}>
       <span>Read More Posts</span>
       <span
         class="iconify text-xl transition-transform duration-500 tabler--chevron-right sm:text-sm"

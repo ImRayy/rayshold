@@ -54,3 +54,25 @@ body {
 .noSelect:focus {
   outline: none !important;
 }
+
+.iconify {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.iconify-color {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-image: var(--svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

@@ -1,4 +1,5 @@
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
+
 import { z, defineCollection } from "astro:content";
 
 const image = z.object({
@@ -8,7 +9,7 @@ const image = z.object({
 });
 
 // -----------------------------------------
-// POST SCHEMA
+// POST COLLECTION SCHEMA
 // -----------------------------------------
 const post = z.object({
   draft: z.boolean(),
@@ -31,8 +32,17 @@ export type PostType = {
 };
 
 // -----------------------------------------
+// PROJECTS COLLECTION
+// -----------------------------------------
+
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/projects" }),
+});
+
+// -----------------------------------------
 // EXPORTS
 // -----------------------------------------
 export const collections = {
   blog: blogCollection,
+  projects,
 };
