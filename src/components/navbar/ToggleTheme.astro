@@ -1,19 +1,14 @@
----
-import Icon from "astro-icon";
-const iconClass = "w-6 transition-transform";
----
-
-<div
-  id="darkModeToggle"
-  class="group inline-flex items-center hover:text-blue-500"
->
-  <span id="light" class="absolute">
-    <Icon name="lucide:sun" class={`${iconClass} group-hover:rotate-12`} />
+<div id="darkModeToggle" class="group flex items-center hover:text-blue-600">
+  <span id="light" class="absolute flex items-center">
+    <!-- <Icon name="lucide:sun" class={`${iconClass} group-hover:rotate-12`} /> -->
+    <span class="iconify top-1/2 rotate-180 text-2xl tabler--circle-half-2"
+    ></span>
   </span>
-  <span id="dark">
-    <Icon name="lucide:moon" class={`${iconClass} group-hover:-rotate-12`} />
+  <span id="dark" class="flex items-center">
+    <span class="iconify text-2xl tabler--circle-half-2"></span>
   </span>
 </div>
+
 <style>
   #light,
   html[data-theme="dark"] #dark {
@@ -24,6 +19,7 @@ const iconClass = "w-6 transition-transform";
     opacity: 100;
   }
 </style>
+
 <script is:inline>
   const lightIcon = document.getElementById("light")?.classList;
   const darkIcon = document.getElementById("dark")?.classList;
