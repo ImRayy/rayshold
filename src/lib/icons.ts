@@ -142,6 +142,13 @@ const rawIcons = {
     source: "github.com/charmbracelet/bubbletea",
     about: "TUIs so cozy, terminals feel like cafés",
   },
+  ags: {
+    name: "AGS",
+    icon: "tabler--apps",
+    provider: "iconify",
+    source: "aylur.github.io/ags/",
+    about: "Scaffolding CLI for Astal + TypeScript",
+  },
 
   // Back-end
   hono: {
@@ -165,6 +172,13 @@ const rawIcons = {
     provider: "iconify-color",
     source: "orm.drizzle.team/",
     about: "lightweight and performant TypeScript ORM ",
+  },
+  neon: {
+    name: "Neon",
+    icon: "logos--neon-icon",
+    source: "neon.tech/",
+    provider: "iconify-color",
+    about: "Serverless open-source alternative to AWS Aurora Postgres",
   },
   betterAuth: {
     name: "Better Auth",

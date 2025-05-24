@@ -38,5 +38,9 @@ export async function getProjects() {
     "projects"
   )) as CollectionResponse<ProjectType>[];
 
-  return projects;
+  return projects.sort((a, b) =>
+    new Date(a.data.createdAt).getTime() > new Date(b.data.createdAt).getTime()
+      ? -1
+      : 1
+  );
 }
