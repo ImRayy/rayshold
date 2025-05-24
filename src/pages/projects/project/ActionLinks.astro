@@ -15,8 +15,8 @@ const onlyHosted = hostedUrl && !sourceUrl;
 
 {
   showBoth && (
-    <>
-      <a href={sourceUrl} target="_blank" rel="noopener" class="mr-2">
+    <div class="inline-flex gap-2">
+      <a href={sourceUrl} target="_blank" rel="noopener">
         <Button variant="outline" size="icon">
           <span class="iconify text-2xl tabler--brand-github" />
         </Button>
@@ -24,10 +24,10 @@ const onlyHosted = hostedUrl && !sourceUrl;
       <a href={hostedUrl} target="_blank" rel="noopener">
         <Button>
           See in action
-          <span class="iconify text-xl transition-transform tabler--arrow-up-right group-hover/button:rotate-45" />
+          <span class="iconify text-lg transition-transform tabler--arrow-up-right group-hover/button:rotate-45 sm:text-xl" />
         </Button>
       </a>
-    </>
+    </div>
   )
 }
 
@@ -47,7 +47,7 @@ const onlyHosted = hostedUrl && !sourceUrl;
     <a href={hostedUrl} target="_blank" rel="noopener">
       <Button>
         See in action
-        <span class="iconify text-xl transition-transform tabler--arrow-up-right group-hover/button:rotate-45" />
+        <span class="iconify  text-lg transition-transform tabler--arrow-up-right group-hover/button:rotate-45 sm:text-xl" />
       </Button>
     </a>
   )

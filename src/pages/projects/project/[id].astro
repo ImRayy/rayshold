@@ -7,6 +7,7 @@ import Highlights from "./Highlights.astro";
 import Features from "./Features.astro";
 import Badge from "@components/ui/Badge.astro";
 import Technologies from "./Technologies.astro";
+import "../../../styles/markdown.css";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -33,14 +34,16 @@ const {
   <div id="animation-container" class="space-y-6">
     <section class="space-y-3">
       <div class="onload-animation inline-flex w-full items-center">
-        <div class="inline-flex gap-2">
-          <h1 class="text-3xl font-bold text-title">{title}</h1>
+        <div class="mt-auto inline-flex gap-2">
+          <h1 class="text-xl font-bold text-title sm:text-2xl">{title}</h1>
           {status === "WIP" && <Badge>{status}</Badge>}
         </div>
         <span class="ml-auto"></span>
         <ActionLinks sourceUrl={sourceUrl} hostedUrl={hostedUrl} />
       </div>
-      <p class="onload-animation text-title/60">{description}</p>
+      <p class="onload-animation text-sm text-title/60 xs:text-base">
+        {description}
+      </p>
       <div class="onload-animation">
         <StackList stack={stack} />
       </div>

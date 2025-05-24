@@ -8,7 +8,7 @@ const { stack } = Astro.props;
 ---
 
 <h3 class="onload-animation pt-4 text-2xl font-bold">Technologies</h3>
-<ul class="onload-animation flex flex-col gap-2">
+<ul class="onload-animation flex flex-col gap-4">
   {
     stack?.map((name) => {
       const icon = icons?.[name as IconKey];
@@ -17,16 +17,17 @@ const { stack } = Astro.props;
 
       const source = icon?.source ?? "#";
       return (
-        <li class="inline-flex items-center gap-2">
-          {"•"}
-          <a
-            href={source}
-            class="font-medium capitalize underline underline-offset-2"
-          >
-            {icon.name}
-          </a>
-          {"-"}
-          <p>{icon.about}</p>
+        <li class="prose flex gap-2 text-sm xs:text-base">
+          <span>
+            <a
+              href={source}
+              class="font-medium capitalize underline underline-offset-2"
+            >
+              {icon.name}
+            </a>
+            {" – "}
+            <span class="text-core-content">{icon.about}</span>
+          </span>
         </li>
       );
     })

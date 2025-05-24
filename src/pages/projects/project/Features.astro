@@ -9,7 +9,7 @@ const { features } = Astro.props;
 <ul class="onload-animation flex flex-col gap-2">
   {
     features?.map((feature) => (
-      <li class="inline-flex gap-2">
+      <li class="prose inline-flex gap-2 text-sm text-core-content xs:text-base">
         <span>•</span> {feature}
       </li>
     ))

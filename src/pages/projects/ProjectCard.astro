@@ -11,10 +11,8 @@ const { id, title, description, image, stack, sourceUrl } = Astro.props;
 
 <div>
   <a href={`/projects/project/${id}`}>
-    <div class="mb-6 rounded-xl border border-border p-1">
-      <div class="overflow-hidden rounded-lg border border-border">
-        <img src={image} class="size-full object-cover" />
-      </div>
+    <div class="mb-4 overflow-hidden rounded-lg">
+      <img src={image} class="size-full object-cover" />
     </div>
   </a>
   <section class="space-y-2">
@@ -24,7 +22,7 @@ const { id, title, description, image, stack, sourceUrl } = Astro.props;
       target="_blank"
       class="group inline-flex items-center gap-2"
     >
-      <h2 class="text-xl font-bold">
+      <h2 class="text-2xl font-bold">
         {title}
       </h2>
       {
