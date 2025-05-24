@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import ActionLinks from "./ActionLinks.astro";
+import StackList from "../StackList.astro";
+import Features from "./Features.astro";
+import Badge from "@components/ui/Badge.astro";
+import Technologies from "./Technologies.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<Layout title={entry.data.title || "Project"}>
+  <div id="animation-container" class="space-y-6">
+    <section class="space-y-3">
+      <div class="onload-animation inline-flex w-full items-center">
+        <div class="inline-flex gap-2">
+          <h1 class="text-3xl font-bold text-title">{entry.data.title}</h1>
+          {entry.data.status === "WIP" && <Badge>{entry.data.status}</Badge>}
+        </div>
+        <span class="ml-auto"></span>
+        <ActionLinks
+          sourceUrl={entry.data.sourceUrl}
+          hostedUrl={entry.data.hostedUrl}
+        />
+      </div>
+      <p class="onload-animation text-title/60">{entry.data.description}</p>
+      <div class="onload-animation">
+        <StackList stack={entry.data.stack} />
+      </div>
+      <img src={entry.data.image} class="onload-animation rounded-lg" />
+    </section>
+    {entry.data.features && <Features features={entry.data.features} />}
+    <Technologies stack={entry.data.stack} />
+  </div>
+</Layout>

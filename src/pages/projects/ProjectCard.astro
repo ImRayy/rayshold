@@ -1,47 +1,39 @@
 ---
-import { buttonVariants } from "@components/ui/Button.astro";
-import type { Project } from "./types";
-import { icons, type Icon, type IconKey } from "@/lib/icons";
+import { type ProjectType } from "src/content.config";
+import StickList from "./StackList.astro";
 
-interface Props extends Project {}
+interface Props extends ProjectType {
+  id: string;
+}
 
-const { title, description, image, status, stack } = Astro.props;
+const { id, title, description, image, stack, sourceUrl } = Astro.props;
 ---
 
-<div class="space-y-3">
-  <section class="space-y-1">
-    <h2 class="text-3xl font-bold">
-      {title}
-    </h2>
+<div>
+  <a href={`/projects/project/${id}`}>
+    <div class="mb-6 rounded-xl border border-border p-1">
+      <div class="overflow-hidden rounded-lg border border-border">
+        <img src={image} class="size-full object-cover" />
+      </div>
+    </div>
+  </a>
+  <section class="space-y-2">
+    <a
+      href={sourceUrl}
+      rel="noreferrer"
+      target="_blank"
+      class="group inline-flex items-center gap-2"
+    >
+      <h2 class="text-xl font-bold">
+        {title}
+      </h2>
+      {
+        sourceUrl && (
+          <span class="iconify text-xl transition-transform tabler--arrow-up-right group-hover:translate-x-2 group-hover:rotate-45" />
+        )
+      }
+    </a>
     <p class="text-sm">{description}</p>
   </section>
-  <div class="overflow-hidden rounded-sm">
-    <img src={image} class="size-full object-cover" />
-  </div>
-  <ul class="flex flex-wrap gap-2">
-    {
-      stack?.map((name) => {
-        const icon: Icon = icons[name as IconKey] ?? undefined;
-        const btnStyle = [buttonVariants({ variant: "outline", size: "sm" })];
-        const source = icon?.source ?? "#";
-
-        return (
-          <a
-            href={source}
-            class:list={btnStyle}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {icon &&
-              (icon.provider === "svgl" || icon.provider === "local" ? (
-                <img src={icon.icon} alt={icon.name} width={icon.size} />
-              ) : (
-                <span class:list={[[icon.icon, "text-core-content"]]} />
-              ))}
-            <span>{icon?.name ?? name}</span>
-          </a>
-        );
-      })
-    }
-  </ul>
+  <StickList stack={stack} />
 </div>

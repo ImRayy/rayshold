@@ -34,9 +34,32 @@ export type PostType = {
 // -----------------------------------------
 // PROJECTS COLLECTION
 // -----------------------------------------
+const projectsSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  sourceUrl: z.string().optional(),
+  hostedUrl: z.string().optional(),
+  image: z.string(),
+  status: z.enum(["PLANNING", "WIP", "COMPLETE"]),
+  stack: z.array(z.string()),
+  features: z
+    .array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        icon: z.string(),
+        color: z.string(),
+      })
+    )
+    .optional(),
+});
+
+export type ProjectType = z.infer<typeof projectsSchema>;
 
 const projects = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/projects" }),
+  loader: file("src/content/resources/projects.json"),
+  schema: projectsSchema,
 });
 
 // -----------------------------------------

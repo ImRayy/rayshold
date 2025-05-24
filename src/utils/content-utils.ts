@@ -1,8 +1,8 @@
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import type { PostType } from "src/content.config";
-import type { Project } from "src/pages/projects/types";
 import type { CollectionResponse } from "src/types";
+import { type ProjectType } from "src/content.config";
 
 async function getPosts(): Promise<PostType[]> {
   return await getCollection("blog", (p: PostType) => {
@@ -36,9 +36,7 @@ export async function getPostsByYear(): Promise<{ [key: string]: PostType[] }> {
 export async function getProjects() {
   const projects = (await getCollection(
     "projects"
-  )) as CollectionResponse<Project>[];
+  )) as CollectionResponse<ProjectType>[];
 
-  return projects.sort((a, b) =>
-    dayjs(a.data.createdAt).diff(b.data.createdAt)
-  );
+  return projects;
 }

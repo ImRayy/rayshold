@@ -6,8 +6,15 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
 ---
 
-<Layout title="Projects">
-  <div class="space-y-10">
-    {projects.map((project) => <ProjectCard {...project.data} />)}
-  </div>
+<Layout title="Projects" className="onload-animation space-y-10">
+  {
+    projects.map((project, idx, self) => (
+      <Fragment>
+        <ProjectCard {...project.data} />
+        <hr
+          class:list={["border-border", { hidden: self.length - 1 === idx }]}
+        />
+      </Fragment>
+    ))
+  }
 </Layout>

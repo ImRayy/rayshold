@@ -1,0 +1,43 @@
+---
+import type { ProjectType } from "src/content.config";
+import { buttonVariants } from "@components/ui/Button.astro";
+
+interface Props extends Pick<ProjectType, "features"> {}
+
+const { features } = Astro.props;
+---
+
+<h3 class="onload-animation pt-4 text-2xl font-bold">Highlights</h3>
+<div class="onload-animation grid gap-3 xs:grid-cols-2">
+  {
+    features?.map(({ title, description, icon, color }) => (
+      <div class="rounded-lg border border-core-content/10  bg-secondary/20 p-3">
+        <span
+          class={buttonVariants({
+            variant: "outline",
+            size: "icon",
+            class:
+              "size-[34px] rounded-lg border border-core-content/10 bg-secondary/30",
+          })}
+        >
+          {icon && (
+            <iconify-icon
+              icon={icon}
+              class="text-xl"
+              style={`color: rgb(var(--color-${color}))`}
+              noobserver
+            />
+          )}
+        </span>
+        <h3 class="pb-2 pt-4 font-medium text-title">{title}</h3>
+        <p class="text-sm text-core-content/70">{description}</p>
+      </div>
+    ))
+  }
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/iconify-icon@3.0.0/dist/iconify-icon.min.js"
+>
+  import "iconify-icon";
+</script>

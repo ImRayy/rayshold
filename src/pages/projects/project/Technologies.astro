@@ -1,0 +1,34 @@
+---
+import { type IconKey, icons } from "@/lib/icons";
+import { type ProjectType } from "src/content.config";
+
+interface Props extends Pick<ProjectType, "stack"> {}
+
+const { stack } = Astro.props;
+---
+
+<h3 class="onload-animation pt-4 text-2xl font-bold">Technologies</h3>
+<ul class="onload-animation flex flex-col gap-2">
+  {
+    stack?.map((name) => {
+      const icon = icons?.[name as IconKey];
+
+      if (!icon) return null;
+
+      const source = icon?.source ?? "#";
+      return (
+        <li class="inline-flex items-center gap-2">
+          {"•"}
+          <a
+            href={source}
+            class="font-medium capitalize underline underline-offset-2"
+          >
+            {icon.name}
+          </a>
+          {"-"}
+          <p>{icon.about}</p>
+        </li>
+      );
+    })
+  }
+</ul>

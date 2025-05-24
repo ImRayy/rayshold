@@ -4,12 +4,13 @@ export interface Icon {
   size?: number;
   provider: "svgl" | "iconify" | "iconify-color" | "local";
   source: string;
+  about?: string;
 }
 
 const getIconUrl = (icon: string, provider: Icon["provider"]) => {
   switch (provider) {
     case "local":
-      return `icons/${icon}.svg`;
+      return `/icons/${icon}.svg`;
     case "svgl":
       return `https:/svgl.app/library/${icon}.svg`;
     case "iconify-color":
@@ -28,12 +29,14 @@ const rawIcons = {
     icon: "logos--gopher",
     provider: "iconify-color",
     source: "go.dev",
+    about: "concurrent coding so fast, it outruns your bugs!",
   },
   python: {
     name: "Python",
     icon: "logos--python",
     provider: "iconify-color",
     source: "www.python.org",
+    about: "the language that’s so readable, even your grandma could debug it",
   },
   nix: {
     name: "Nix",
@@ -41,24 +44,28 @@ const rawIcons = {
     size: 14,
     provider: "local",
     source: "https://nixos.org/",
+    about: "rebuilds your system for fun, not simplicity",
   },
   lua: {
     name: "Lua",
     icon: "logos--lua",
     provider: "iconify-color",
     source: "lua.org",
+    about: "lightweight scripting, coding in flip-flops",
   },
   bash: {
     name: "Bash",
     icon: "logos--bash-icon",
     provider: "iconify-color",
     source: "www.gnu.org/software/bash/",
+    about: "scripting language that's soo capable until it's not",
   },
   typeScript: {
     name: "TypeScript",
     icon: "logos--typescript-icon",
     provider: "iconify-color",
     source: "www.typescriptlang.org/",
+    about: "JavaScript’s nanny, catching type tantrums.",
   },
 
   // Bundler & Run-time Environments
@@ -67,12 +74,14 @@ const rawIcons = {
     icon: "logos--vitejs",
     provider: "iconify-color",
     source: "vite.dev/",
+    about: "bundles apps faster than you type ‘npm’",
   },
   bun: {
     name: "Bun",
     icon: "logos--bun",
     provider: "iconify-color",
     source: "bun.sh/",
+    about: "JS runtime outpacing Node on a hamster wheel.",
   },
 
   // Frond-end
@@ -81,6 +90,7 @@ const rawIcons = {
     icon: "logos--astro-icon",
     provider: "iconify",
     source: "astro.build/",
+    about: "static sites so slick, servers nap",
   },
   tanStack: {
     name: "TanStack",
@@ -88,42 +98,49 @@ const rawIcons = {
     size: 16,
     provider: "local",
     source: "tanstack.com/",
+    about: "is something that should takeover the world, I won't call avengers",
   },
   react: {
     name: "React",
     icon: "logos--react",
     provider: "iconify-color",
     source: "react.dev/",
+    about: "components galore, props drilling nightmares",
   },
   sass: {
     name: "Sass",
     icon: "logos--sass",
     provider: "iconify-color",
     source: "sass-lang.com/",
+    about: "CSS as a programming language",
   },
   css: {
     name: "CSS",
     icon: "logos--css-3",
     provider: "iconify-color",
     source: "developer.mozilla.org/en-US/docs/Web/CSS",
+    about: "can center a div eventually",
   },
   nextjs: {
     name: "Next.js",
     icon: "logos--nextjs-icon",
     provider: "iconify-color",
     source: "nextjs.org/",
+    about: "react framework that slower than react",
   },
   tailwindcss: {
     name: "Tailwindcss",
     icon: "logos--tailwindcss-icon",
     provider: "iconify-color",
     source: "tailwindcss.com/",
+    about: "47 classes per div, CSS who?",
   },
   bubbleTea: {
     name: "Bubble Tea",
     icon: "fluent-emoji-flat--bubble-tea",
     provider: "iconify-color",
     source: "github.com/charmbracelet/bubbletea",
+    about: "TUIs so cozy, terminals feel like cafés",
   },
 
   // Back-end
@@ -132,6 +149,7 @@ const rawIcons = {
     icon: "logos--hono",
     provider: "iconify-color",
     source: "hono.dev/",
+    about: "web framework light enough for your toaster.",
   },
   supabase: {
     name: "Supabase",
@@ -139,12 +157,14 @@ const rawIcons = {
     size: 18,
     provider: "iconify-color",
     source: "supabase.com/",
+    about: "auth, DB, storage—Firebase’s cooler cousin",
   },
   drizzle: {
     name: "Drizzle",
     icon: "fluent-emoji-flat--cloud-with-rain",
     provider: "iconify-color",
     source: "orm.drizzle.team/",
+    about: "lightweight and performant TypeScript ORM ",
   },
   betterAuth: {
     name: "Better Auth",
@@ -152,6 +172,7 @@ const rawIcons = {
     size: 18,
     provider: "local",
     source: "www.better-auth.com/",
+    about: "is really better",
   },
 
   // Misc
@@ -160,12 +181,14 @@ const rawIcons = {
     icon: "logos--toml",
     provider: "iconify",
     source: "toml.io/en/",
+    about: "clean configs, JSON needs a bath",
   },
   archLinux: {
     name: "Arch btw",
     icon: "logos--archlinux",
     provider: "iconify-color",
     source: "archlinux.org/",
+    about: "BTW",
   },
 } as const satisfies Record<string, Icon>;
 

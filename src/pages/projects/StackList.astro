@@ -1,0 +1,33 @@
+---
+import { buttonVariants } from "@components/ui/Button.astro";
+import { icons, type Icon, type IconKey } from "@/lib/icons";
+import { type ProjectType } from "src/content.config";
+
+interface Props {
+  stack: ProjectType["stack"];
+}
+
+const { stack } = Astro.props;
+---
+
+<ul class="mt-3 flex flex-wrap gap-2">
+  {
+    stack?.map((name) => {
+      const icon: Icon = icons[name as IconKey] ?? undefined;
+      const btnStyle = [buttonVariants({ variant: "outline", size: "sm" })];
+      const source = icon?.source ?? "#";
+
+      return (
+        <a href={source} class:list={btnStyle} target="_blank" rel="noreferrer">
+          {icon &&
+            (icon.provider === "svgl" || icon.provider === "local" ? (
+              <img src={icon.icon} alt={icon.name} width={icon.size} />
+            ) : (
+              <span class:list={[[icon.icon, "text-md text-core-content"]]} />
+            ))}
+          <span>{icon?.name ?? name}</span>
+        </a>
+      );
+    })
+  }
+</ul>

@@ -1,0 +1,54 @@
+---
+import Button from "@components/ui/Button.astro";
+
+interface Props {
+  hostedUrl: string | undefined;
+  sourceUrl: string | undefined;
+}
+
+const { hostedUrl, sourceUrl } = Astro.props;
+
+const showBoth = sourceUrl && hostedUrl;
+const onlySource = sourceUrl && !hostedUrl;
+const onlyHosted = hostedUrl && !sourceUrl;
+---
+
+{
+  showBoth && (
+    <>
+      <a href={sourceUrl} target="_blank" rel="noopener" class="mr-2">
+        <Button variant="outline" size="icon">
+          <span class="iconify text-2xl tabler--brand-github" />
+        </Button>
+      </a>
+      <a href={hostedUrl} target="_blank" rel="noopener">
+        <Button>
+          See in action
+          <span class="iconify text-xl transition-transform tabler--arrow-up-right group-hover/button:rotate-45" />
+        </Button>
+      </a>
+    </>
+  )
+}
+
+{
+  onlySource && (
+    <a href={sourceUrl} target="_blank" rel="noopener">
+      <Button>
+        GitHub
+        <span class="iconify ml-1 text-xl tabler--brand-github" />
+      </Button>
+    </a>
+  )
+}
+
+{
+  onlyHosted && (
+    <a href={hostedUrl} target="_blank" rel="noopener">
+      <Button>
+        See in action
+        <span class="iconify text-xl transition-transform tabler--arrow-up-right group-hover/button:rotate-45" />
+      </Button>
+    </a>
+  )
+}
